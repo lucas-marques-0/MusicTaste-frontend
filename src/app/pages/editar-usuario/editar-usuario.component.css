@@ -84,7 +84,7 @@
     border: none;
 }
 
-.card button {
+.card div button {
     background-color: #e63946;
     padding: 10px 50px;
     border-radius: 5px;
@@ -99,7 +99,7 @@
     align-items: center;
 }
 
-.card button:hover{
+.card div button:hover{
     background-color: #e63947b6;
 }
 
@@ -116,15 +116,15 @@
     color: #c93440;
     font-size: 1.1em;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .linkEncurtado span {
     color: #c93440;
     font-size: 1.1em;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .linkEncurtado p {
@@ -137,6 +137,7 @@
 }
 
 .linkEncurtado button {
+    padding: 5px;
     background-color: #e63946;
     border-radius: 5px;
     cursor: pointer;
