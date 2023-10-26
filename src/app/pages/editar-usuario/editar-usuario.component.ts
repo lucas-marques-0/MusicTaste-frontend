@@ -88,17 +88,10 @@ export class EditarUsuarioComponent {
     }
   }*/
 
-  async obterURLFinal(linkCurto: any) {
-    return await fetch(linkCurto);
-  }
-
   verificarUrlSpotify(link: string): boolean {
-    
-    if(link.includes('spotify.link')) {
-      const linkNovo = this.obterURLFinal(link);
-      console.log(linkNovo)
-    }
 
+    // ---> if(link.includes('spotify.link'))
+    
     const regex = /^https:\/\/open\.spotify\.com\/(intl-pt\/)?track\/([a-zA-Z0-9]{22})(\?.*)?$/;
     const match = link.match(regex);
     if (match && match[2] && match[2].length === 22) {
