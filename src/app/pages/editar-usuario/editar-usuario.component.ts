@@ -123,14 +123,11 @@ export class EditarUsuarioComponent {
 
   mostrarMusica(keyMusica: any, linkMusica: any) {
     if (!this.urlMusicaEmbed[keyMusica]) {
-      console.log('ta na lista no front')
       if(linkMusica.includes('intl-pt')) {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
       } else {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('/track/', '/embed/track/'));
       }
-    } else {
-      console.log('tava no back')
     }
     return this.urlMusicaEmbed[keyMusica];
   }
