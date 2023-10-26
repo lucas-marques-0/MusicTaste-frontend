@@ -89,31 +89,15 @@ export class EditarUsuarioComponent {
   }*/
 
   async obterURLFinal(linkCurto: any) {
-    try {
-      const response = await fetch(linkCurto, { method: 'HEAD', redirect: 'follow' });
-      const urlFinal = response.url;
-      return urlFinal;
-    } catch (error) {
-      console.error('Erro ao obter a URL final:', error);
-      return null;
-    }
+    return await fetch(linkCurto);
   }
-
-  /*this.obterURLFinal(linkCurto)
-  .then((urlFinal) => {
-    if (urlFinal) {
-      console.log("URL Final:", urlFinal);
-    } else {
-      console.log("Não foi possível obter a URL final.");
-    }
-  });*/
 
   verificarUrlSpotify(link: string): boolean {
     
     if(link.includes('spotify.link')) {
-      this.obterURLFinal(link).then((urlFinal) => { if(urlFinal) {console.log(urlFinal)} else {console.log('erro')}})
+      const linkNovo = this.obterURLFinal(link);
+      console.log(linkNovo)
     }
-    // ---> if(link.includes('spotify.link'))
 
     const regex = /^https:\/\/open\.spotify\.com\/(intl-pt\/)?track\/([a-zA-Z0-9]{22})(\?.*)?$/;
     const match = link.match(regex);
