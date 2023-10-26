@@ -1,0 +1,20 @@
+<div class="home-container">
+    <app-navbar (searchEvent)="filtrarUsuarios($event)" layout="1"></app-navbar>
+    <div *ngIf="isLoading" class="loading"><p>Carregando...</p></div>
+    <div *ngIf="!isLoading" class="page-content">
+        <h1>Explorar usuários</h1>
+        <div class="grid-usuarios" *ngIf="!usuarioNaoEncontrado">
+            <div *ngFor="let usuario of (usuariosFiltrados.length > 0 ? usuariosFiltrados : usuarios)" class="card">
+                <img [src]="usuario.avatar" alt="foto de perfil">
+                <h2>{{ usuario.username }}</h2>
+                <button (click)="verPerfil(usuario)">Ver perfil</button>
+            </div>
+        </div>
+        <div *ngIf="usuarioNaoEncontrado" class="usuario-nao-encontrado">
+            <h2>Usuario não encontrado :/</h2>
+            <p>Tente novamente ou liste todos novamente</p>
+            <button (click)="resetarListaUsuarios()">OK!</button>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

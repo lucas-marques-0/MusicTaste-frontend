@@ -1,0 +1,200 @@
+.ver-perfil-container {
+    background-color: #f5eee6;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 150px;
+}
+
+.loading {
+    margin-top: 100px;
+    text-align: center;
+    min-height: calc(100vh - 200px);
+    color: #000000;
+    margin-top: 100px;
+    font-size: 1.5em;
+}
+
+.page-content {
+    margin-top: 100px;
+}
+
+.infosUsuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(190deg, #e63946, #e7a049);
+    padding: 30px;
+    color: #ffffff;
+}
+
+.infosUsuario img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.infosUsuario p {
+    background-color: #e63946;
+    padding: 2px 10px;
+}
+
+.infosUsuario h1 {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-musicas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #efdac1;
+    padding: 30px 10px;
+    border-radius: 10px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #00000038;
+}
+
+.card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.card p {
+    width: 550px;
+    text-align: center;
+}
+
+.card input {
+    width: 550px;
+    padding: 8.5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.card button {
+    background-color: #e63946;
+    padding: 10px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.5s;
+    border: none;
+    font-size: 1.1em;
+}
+
+.card button:hover{
+    background-color: #e63947b6;
+}
+
+.card h2 {
+    background-color: #c93440;
+    padding: 2px 10px;
+    color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.textoSemMusica {
+    margin: 20px;
+}
+
+@media (max-width: 1000px) {
+    .card {
+        width: 80%;
+    }
+
+    .card p {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        width: 90%;
+    }
+
+    .card p {
+        font-size: 0.8em;
+    }
+
+    .card h2 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 400px) {
+    .card h2 {
+        max-width: 90%;
+        overflow: auto;
+    }
+
+    .card p {
+        width: 90%;
+    }
+
+    .card iframe {
+        width: 90% !important;
+    }
+
+    .infosUsuario h1 {
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 300px) {
+    .infosUsuario img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 270px) {
+    .page-content, .loading {
+        margin-top: 130px
+    }
+
+    .card h2 {
+        max-width: 100%;
+    }
+
+    .card p {
+        width: 100%;
+    }
+    
+    .card input {
+        width: 100%;
+    }
+    
+    .card button {
+        width: 100%;
+    }
+
+    .card iframe {
+        width: 100% !important;
+    }
+
+    .infosUsuario p {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.8em;
+    }
+}
