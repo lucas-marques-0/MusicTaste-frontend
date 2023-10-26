@@ -122,10 +122,13 @@ export class EditarUsuarioComponent {
     if (!this.urlMusicaEmbed[keyMusica]) {
       if(linkMusica.includes('intl-pt')) {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
+        console.log(this.urlMusicaEmbed[keyMusica], 'tem input-pt')
       } else {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('/track/', '/embed/track/'));
+        console.log(this.urlMusicaEmbed[keyMusica], 'só o track')
       }
     }
+    console.log(this.urlMusicaEmbed[keyMusica], 'já tinha no back')
     return this.urlMusicaEmbed[keyMusica];
   }
 
