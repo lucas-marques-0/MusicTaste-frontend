@@ -79,7 +79,8 @@ export class EditarUsuarioComponent {
   }
 
   verificarUrlSpotify(link: string): boolean {
-    const regex = /^https:\/\/open\.spotify\.com\/intl-pt\/track\/([a-zA-Z0-9]{22})(\?.*)?$/;
+    //const regex = /^https:\/\/open\.spotify\.com\/intl-pt\/track\/([a-zA-Z0-9]{22})(\?.*)?$/;
+    const regex = /^https:\/\/open\.spotify\.com\/(intl-pt\/)?track\/([a-zA-Z0-9]{22})(\?.*)?$/;
     const match = link.match(regex);
     if (match && match[1].length === 22) {
       return true;
