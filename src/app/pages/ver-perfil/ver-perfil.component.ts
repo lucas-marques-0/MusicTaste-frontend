@@ -20,7 +20,7 @@ export class VerPerfilComponent {
     'Música favorita do seu artista favorito.',
     'Música antiga que você ainda escuta. ',
     'Música com melhor letra.',
-    'Música boa que quase ninguém conhece.',
+    'Música que quase ninguém conhece.',
     'Música que mais mudou sua visão e perspectiva.',
     'Música que cresceu escutando.',
     'Música mais diferente que já escutou.',
