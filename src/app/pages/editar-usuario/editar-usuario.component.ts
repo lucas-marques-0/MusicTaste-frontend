@@ -68,7 +68,11 @@ export class EditarUsuarioComponent {
       const iframe = document.querySelector(`#iframe-${musica.key}`) as any;
       if(this.verificarUrlSpotify(value)) {
         musica.value = value
-        iframe.src = value.replace('intl-pt', 'embed');
+        if(value.includes('intl-pt')){
+          iframe.src = value.replace('intl-pt', 'embed');
+        } else {
+          iframe.src = value.replace('/track/', '/embed/track/')
+        }
         this.atualizarMusicas(this.userID, this.musicasUsuario)
         this.linksMusicasAtualizadas[musica.key] = ''
       } else {
@@ -118,17 +122,13 @@ export class EditarUsuarioComponent {
   } */
 
   mostrarMusica(keyMusica: any, linkMusica: any) {
-    console.log(linkMusica)
     if (!this.urlMusicaEmbed[keyMusica]) {
       if(linkMusica.includes('intl-pt')) {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
-        console.log(this.urlMusicaEmbed[keyMusica], 'tem input-pt')
       } else {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('/track/', '/embed/track/'));
-        console.log(this.urlMusicaEmbed[keyMusica], 'só o track')
       }
     }
-    console.log(this.urlMusicaEmbed[keyMusica], 'já tinha no back')
     return this.urlMusicaEmbed[keyMusica];
   }
 
