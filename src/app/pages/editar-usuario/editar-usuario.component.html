@@ -21,7 +21,11 @@
                     <iframe style="border-radius:12px" [id]="'iframe-'+musica.key" [src]="mostrarMusica(musica.key, musica.value)" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     <input type="text" placeholder="link da musica atualizada aqui" [(ngModel)]="linksMusicasAtualizadas[musica.key]">
                     <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
-                    <span *ngIf="linkEncurtado[musica.key]" class="linkInvalido">O link digitado está encurtado.</span>
+                    <span *ngIf="linkEncurtado[musica.key]" class="linkInvalido">
+                        <p>O link digitado está encurtado.</p>
+                        <p style="color: #000000 !important; font-size: 0.9em !important;">No app do spotify, tente clicar em <img src="https://icons8.com/icon/Kq5VxKPsk88t/view-more"> e depois 'Copiar'</p>
+                        <button (click)="linkEncurtado[musica.key] == false">Ok!</button>
+                    </span>
                     <button (click)="colocarMusica(musica.key, 2)">Atualizar!</button>
                 </div>
             </div>

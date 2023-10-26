@@ -112,9 +112,6 @@ export class EditarUsuarioComponent {
 
   avisarLinkEncurtado(id: any) {
     this.linkEncurtado[id] = true;
-    setTimeout(() => {
-      this.linkEncurtado[id] = false;
-    }, 3000);
   }
 
   async atualizarMusicas(userID: any, musicasUsuario: any) {
