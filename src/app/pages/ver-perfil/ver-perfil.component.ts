@@ -44,7 +44,11 @@ export class VerPerfilComponent {
   }
 
   mostrarMusica(musicaUrl: any) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('intl-pt', 'embed'))
+    if(musicaUrl.includes('intl-pt')) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('intl-pt', 'embed'))
+    } else {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('/track/', '/embed/track/'));
+    }
   }
 
 }
