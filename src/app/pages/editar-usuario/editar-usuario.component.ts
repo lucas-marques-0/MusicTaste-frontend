@@ -34,6 +34,7 @@ export class EditarUsuarioComponent {
   linksMusicas: any = new Array(10).fill('');
   linksMusicasAtualizadas: any = new Array(10).fill('');
   linkInvalido: boolean[] = new Array(10).fill(false);
+  linkEncurtado: boolean[] = new Array(10).fill(false);
   urlMusicaEmbed: { [key: string]: SafeResourceUrl } = {};
   usuarios: any = []
   isLoading: boolean = true
@@ -59,8 +60,13 @@ export class EditarUsuarioComponent {
         this.atualizarMusicas(this.userID, this.musicasUsuario)
         this.linksMusicas[musica.key] = ''
       } else {
-        this.avisarLinkInvalido(chave)
-        this.linksMusicas[musica.key] = ''
+        if(value.includes('spotify.link')) {
+          this.avisarLinkEncurtado(chave)
+          this.linksMusicas[musica.key] = ''
+        } else {
+          this.avisarLinkInvalido(chave)
+          this.linksMusicas[musica.key] = ''
+        }
       }
     }
     if(acao == 2) {
@@ -76,8 +82,13 @@ export class EditarUsuarioComponent {
         this.atualizarMusicas(this.userID, this.musicasUsuario)
         this.linksMusicasAtualizadas[musica.key] = ''
       } else {
-        this.avisarLinkInvalido(chave)
-        this.linksMusicasAtualizadas[musica.key] = ''
+        if(value.includes('spotify.link')) {
+          this.avisarLinkEncurtado(chave)
+          this.linksMusicas[musica.key] = ''
+        } else {
+          this.avisarLinkInvalido(chave)
+          this.linksMusicas[musica.key] = ''
+        }
       }
     }
   }
@@ -96,6 +107,13 @@ export class EditarUsuarioComponent {
     this.linkInvalido[id] = true;
     setTimeout(() => {
       this.linkInvalido[id] = false;
+    }, 3000);
+  }
+
+  avisarLinkEncurtado(id: any) {
+    this.linkEncurtado[id] = true;
+    setTimeout(() => {
+      this.linkEncurtado[id] = false;
     }, 3000);
   }
 

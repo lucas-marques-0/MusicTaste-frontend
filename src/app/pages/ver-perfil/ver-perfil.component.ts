@@ -39,8 +39,6 @@ export class VerPerfilComponent {
     let userInfos = await this.verPerfilService.buscarInfosUsuario(userID);    
     this.usuarioInfos = userInfos[0]     
     this.musicasUsuario = this.usuarioInfos.musicas
-
-    console.log(this.userID, this.usuarioInfos, this.musicasUsuario)
   }
 
   mostrarMusica(musicaUrl: any) {
