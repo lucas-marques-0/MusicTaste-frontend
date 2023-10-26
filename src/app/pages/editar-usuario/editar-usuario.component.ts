@@ -109,11 +109,24 @@ export class EditarUsuarioComponent {
     await this.editarUsuarioService.atualizarMusicasUsuario(userID, musicasUsuario); 
   }
 
-  mostrarMusica(keyMusica: any, linkMusica: any) {
+  /* mostrarMusica(keyMusica: any, linkMusica: any) {
     if (!this.urlMusicaEmbed[keyMusica]) {
       this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
     }
     return this.urlMusicaEmbed[keyMusica];
+  } */
+
+  mostrarMusica(keyMusica: any, linkMusica: any) {
+    let modifiedLink = linkMusica;
+    if (linkMusica.indexOf('intl-pt') === -1) {
+      modifiedLink = linkMusica.replace('/track/', '/embed/track/');
+      console.log(modifiedLink)
+    }
+    if (!this.urlMusicaEmbed[keyMusica]) {
+      this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(modifiedLink);
+    }
+    return this.urlMusicaEmbed[keyMusica];
   }
+  
     
 }
