@@ -78,7 +78,7 @@ export class EditarUsuarioComponent {
     }
   }
 
-  /*verificarUrlSpotify(link: string): boolean {
+  verificarUrlSpotify(link: string): boolean {
     const regex = /^https:\/\/open\.spotify\.com\/intl-pt\/track\/([a-zA-Z0-9]{22})(\?.*)?$/;
     const match = link.match(regex);
     if (match && match[1].length === 22) {
@@ -86,9 +86,9 @@ export class EditarUsuarioComponent {
     } else {
       return false;
     }
-  }*/
+  }
 
-  verificarUrlSpotify(link: string): boolean {
+  /*verificarUrlSpotify(link: string): boolean {
 
     // ---> if(link.includes('spotify.link'))
     
@@ -99,7 +99,7 @@ export class EditarUsuarioComponent {
     } else {
       return false;
     }
-  }
+  }*/
 
   avisarLinkInvalido(id: any) {
     this.linkInvalido[id] = true;
@@ -112,21 +112,21 @@ export class EditarUsuarioComponent {
     await this.editarUsuarioService.atualizarMusicasUsuario(userID, musicasUsuario); 
   }
 
-  /* mostrarMusica(keyMusica: any, linkMusica: any) {
+  mostrarMusica(keyMusica: any, linkMusica: any) {
     if (!this.urlMusicaEmbed[keyMusica]) {
       this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
     }
     return this.urlMusicaEmbed[keyMusica];
-  } */
+  } 
 
-  mostrarMusica(keyMusica: any, linkMusica: any) {
+  /* mostrarMusica(keyMusica: any, linkMusica: any) {
     if (linkMusica.includes('intl-pt') && !this.urlMusicaEmbed[keyMusica]) {
       this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
     } else {
       this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('/track/', '/embed/track/'));
     } 
     return this.urlMusicaEmbed[keyMusica];
-  }
+  } */
   
     
 }
