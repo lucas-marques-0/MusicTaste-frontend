@@ -105,7 +105,6 @@ export class EditarUsuarioComponent {
 
   mostrarMusica(keyMusica: any, linkMusica: any) {
     if (!this.urlMusicaEmbed[keyMusica]) {
-      // https://open.spotify.com/embed/track/6y5UMIVVJDsULZwfZ0bNRX?si=r1UbXjLaQRGhclM30oy-Vw
       if(linkMusica.includes('intl-pt')) {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
       } else {

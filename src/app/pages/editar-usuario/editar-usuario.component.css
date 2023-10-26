@@ -150,6 +150,12 @@
     }
 }
 
+@media (max-width: 470px) {
+    .page-content, .loading {
+        margin-top: 138px
+    }
+}
+
 @media (max-width: 400px) {
     .card h2 {
         max-width: 90%;
