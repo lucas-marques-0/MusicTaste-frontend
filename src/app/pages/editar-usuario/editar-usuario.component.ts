@@ -119,6 +119,8 @@ export class EditarUsuarioComponent {
 
   mostrarMusica(keyMusica: any, linkMusica: any) {
     if (!this.urlMusicaEmbed[keyMusica]) {
+      this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
+    } else {
       if(linkMusica.includes('intl-pt')) {
         this.urlMusicaEmbed[keyMusica] = this.sanitizer.bypassSecurityTrustResourceUrl(linkMusica.replace('intl-pt', 'embed'));
       } else {
