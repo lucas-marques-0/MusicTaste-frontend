@@ -84,10 +84,10 @@ export class EditarUsuarioComponent {
       } else {
         if(value.includes('spotify.link')) {
           this.avisarLinkEncurtado(chave)
-          this.linksMusicas[musica.key] = ''
+          this.linksMusicasAtualizadas[musica.key] = ''
         } else {
           this.avisarLinkInvalido(chave)
-          this.linksMusicas[musica.key] = ''
+          this.linksMusicasAtualizadas[musica.key] = ''
         }
       }
     }
