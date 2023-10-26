@@ -118,6 +118,30 @@
     font-weight: bold;
 }
 
+.linkEncurtado span {
+    color: #c93440;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.linkEncurtado p {
+    color: #000000;
+    font-size: 0.8em;
+}
+
+.linkEncurtado button {
+    background-color: #e63946;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.5s;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 1000px) {
     .card {
         width: 80%;

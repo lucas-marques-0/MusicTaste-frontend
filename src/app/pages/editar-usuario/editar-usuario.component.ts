@@ -114,6 +114,10 @@ export class EditarUsuarioComponent {
     this.linkEncurtado[id] = true;
   }
 
+  removerLinkEncurtado(id: any) {
+    this.linkEncurtado[id] = true;
+  }
+
   async atualizarMusicas(userID: any, musicasUsuario: any) {
     await this.editarUsuarioService.atualizarMusicasUsuario(userID, musicasUsuario); 
   }
