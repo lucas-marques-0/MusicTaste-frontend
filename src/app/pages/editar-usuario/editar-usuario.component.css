@@ -135,13 +135,10 @@
 .linkEncurtado p {
     color: #000000;
     font-size: 0.8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .linkEncurtado p img {
-    width: 30px;
+    width: 20px;
 }
 
 .linkEncurtado button {
