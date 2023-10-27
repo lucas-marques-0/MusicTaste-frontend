@@ -13,12 +13,13 @@ footer {
 }
 
 footer p span a {
-    color: #83b2db;
+    color: #81c4ff;
     text-decoration: none;
+    box-shadow: 1px solid black;
 }
 
 footer p span a:visited{
-    color: #83b2db;
+    color: #81c4ff;
 }
 
 
