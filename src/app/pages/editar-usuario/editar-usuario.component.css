@@ -119,18 +119,26 @@
 }
 
 .linkEncurtado {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .linkEncurtado span {
     color: #c93440;
     font-size: 1.1em;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .linkEncurtado p {
     color: #000000;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .linkEncurtado p img {

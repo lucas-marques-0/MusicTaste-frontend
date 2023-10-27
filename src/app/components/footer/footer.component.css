@@ -12,6 +12,15 @@ footer {
     right: 0;
 }
 
+footer p span {
+    color: rgb(119, 154, 214);
+    text-decoration: none;
+}
+
+footer p span a:visited{
+    color: rgb(119, 154, 214);
+}
+
 
 @media (max-width: 500px) {
     footer {

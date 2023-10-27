@@ -14,7 +14,11 @@
                     <p>Responda a pergunda acima adicionando o link da musica no Spotify.</p>
                     <input type="text" placeholder="link aqui" [(ngModel)]="linksMusicas[musica.key]">
                     <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
-                    <span *ngIf="linkEncurtado[musica.key]" class="linkInvalido">O link digitado está encurtado.</span>
+                    <span *ngIf="linkEncurtado[musica.key]" class="linkEncurtado">
+                        <span>O link digitado está encurtado.</span>
+                        <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'</p>
+                        <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
+                    </span>
                     <button (click)="colocarMusica(musica.key, 1)">Decidido!</button>
                 </div>
                 <div *ngIf="musica.value">
@@ -22,8 +26,8 @@
                     <input type="text" placeholder="link da musica atualizada aqui" [(ngModel)]="linksMusicasAtualizadas[musica.key]">
                     <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
                     <span *ngIf="linkEncurtado[musica.key]" class="linkEncurtado">
-                        <span>O link digitado está encurtadooooo.</span>
-                        <p>No app do spotify, tente clicar em <img src="https://icons8.com/icon/Kq5VxKPsk88t/view-more"> e depois 'Copiar'</p>
+                        <span>O link digitado está encurtado.</span>
+                        <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'</p>
                         <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
                     </span>
                     <button (click)="colocarMusica(musica.key, 2)">Atualizar!</button>
