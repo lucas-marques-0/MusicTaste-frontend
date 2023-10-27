@@ -126,6 +126,11 @@
     gap: 10px;
 }
 
+.texto-centralizado {
+    display: flex;
+    align-items: center;
+}
+
 .linkEncurtado span {
     color: #c93440;
     font-size: 1.1em;
