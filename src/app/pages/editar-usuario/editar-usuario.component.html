@@ -27,7 +27,7 @@
                     <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
                     <span *ngIf="linkEncurtado[musica.key]" class="linkEncurtado">
                         <span>O link digitado está encurtado.</span>
-                        <p>No app do spotify, tente clicar em <span class="texto-centralizado"><img src="../../../assets/mais-icone.png"> e depois 'Copiar'.</span></p>
+                        <p>No app do spotify, tente clicar em <span class="texto-centralizado"><img src="../../../assets/mais-icone.png"></span>e depois 'Copiar'.</p>
                         <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
                     </span>
                     <button class="btn-card" (click)="colocarMusica(musica.key, 2)">Atualizar!</button>

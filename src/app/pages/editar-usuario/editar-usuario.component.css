@@ -129,6 +129,9 @@
 .texto-centralizado {
     display: flex;
     align-items: center;
+    color: #000000;
+    font-size: 1em;
+}
 }
 
 .linkEncurtado span {
