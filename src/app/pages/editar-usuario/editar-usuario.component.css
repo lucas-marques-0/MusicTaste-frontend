@@ -119,9 +119,7 @@
 }
 
 .linkEncurtado {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .linkEncurtado span {
@@ -133,9 +131,6 @@
 .linkEncurtado p {
     color: #000000;
     font-size: 0.9em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .linkEncurtado p img {
