@@ -84,7 +84,7 @@
     border: none;
 }
 
-.card div button {
+.btn-card {
     background-color: #e63946;
     padding: 10px 50px;
     border-radius: 5px;
@@ -99,7 +99,7 @@
     align-items: center;
 }
 
-.card div button:hover{
+.btn-card:hover{
     background-color: #e63947b6;
 }
 
@@ -122,23 +122,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .linkEncurtado span {
     color: #c93440;
     font-size: 1.1em;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .linkEncurtado p {
     color: #000000;
     font-size: 0.8em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .linkEncurtado p img {
@@ -153,9 +149,7 @@
     color: #ffffff;
     transition: background-color 0.5s;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 5px 10px;
 }
 
 .linkEncurtado button:hover{
@@ -175,7 +169,7 @@
         width: 80%;
     }
     
-    .card button {
+    .btn-card {
         width: 80%;
     }
 }
@@ -214,7 +208,7 @@
         width: 90%;
     }
     
-    .card button {
+    .btn-card {
         width: 90%;
     }
 
@@ -246,7 +240,7 @@
         width: 100%;
     }
     
-    .card button {
+    .btn-card {
         width: 100%;
     }
 

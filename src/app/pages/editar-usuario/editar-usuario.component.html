@@ -19,7 +19,7 @@
                         <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'</p>
                         <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
                     </span>
-                    <button (click)="colocarMusica(musica.key, 1)">Decidido!</button>
+                    <button class="btn-card" (click)="colocarMusica(musica.key, 1)">Decidido!</button>
                 </div>
                 <div *ngIf="musica.value">
                     <iframe style="border-radius:12px" [id]="'iframe-'+musica.key" [src]="mostrarMusica(musica.key, musica.value)" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -30,7 +30,7 @@
                         <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'</p>
                         <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
                     </span>
-                    <button (click)="colocarMusica(musica.key, 2)">Atualizar!</button>
+                    <button class="btn-card" (click)="colocarMusica(musica.key, 2)">Atualizar!</button>
                 </div>
             </div>
         </div>

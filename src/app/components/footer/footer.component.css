@@ -12,13 +12,13 @@ footer {
     right: 0;
 }
 
-footer p span {
-    color: rgb(119, 154, 214);
+footer p span a {
+    color: #1F88E5;
     text-decoration: none;
 }
 
 footer p span a:visited{
-    color: rgb(119, 154, 214);
+    color: #1F88E5;
 }
 
 
