@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
-import * as bcrypt from 'bcryptjs';
-
 
 @Component({
   selector: 'app-cadastro',
@@ -37,20 +35,6 @@ export class CadastroComponent {
         }
       }
     }
-  }
-
-  async criptografarSenha(password: string): Promise<string> {
-    const saltRounds = 10;
-    return new Promise((resolve, reject) => {
-      bcrypt.hash(password, saltRounds, (err: any, hash: any) => {
-        if (err) {
-          console.error('Erro ao criar o hash da senha:', err);
-          reject(err);
-        } else {
-          resolve(hash);
-        }
-      });
-    });
   }
 
   async verificarNomeUsuarioJaExiste() {
