@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
-const bcrypt = require('bcrypt')
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-cadastro',
@@ -30,8 +30,7 @@ export class CadastroComponent {
         if(await this.verificarNomeUsuarioJaExiste()) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          const hashedPassword = await this.criptografarSenha(this.password);
-          await this.cadastroService.adicionarUsuario(this.username.trim(), hashedPassword);
+          await this.cadastroService.adicionarUsuario(this.username.trim(), this.password);
           this.resetarValores();
           this.router.navigate(['/']);
         }
