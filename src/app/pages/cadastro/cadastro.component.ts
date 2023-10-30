@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
+const bcrypt = require('bcrypt');
+
 
 @Component({
   selector: 'app-cadastro',
@@ -29,12 +31,27 @@ export class CadastroComponent {
         if(await this.verificarNomeUsuarioJaExiste()) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          await this.cadastroService.adicionarUsuario(this.username.trim(), this.password);
+          const hashedPassword = await this.criptografarSenha(this.password);
+          await this.cadastroService.adicionarUsuario(this.username.trim(), hashedPassword);
           this.resetarValores();
           this.router.navigate(['/']);
         }
       }
     }
+  }
+
+  async criptografarSenha(password: string): Promise<string> {
+    const saltRounds = 10;
+    return new Promise((resolve, reject) => {
+      bcrypt.hash(password, saltRounds, (err: any, hash: any) => {
+        if (err) {
+          console.error('Erro ao criar o hash da senha:', err);
+          reject(err);
+        } else {
+          resolve(hash);
+        }
+      });
+    });
   }
 
   async verificarNomeUsuarioJaExiste() {

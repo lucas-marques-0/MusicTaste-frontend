@@ -23,6 +23,7 @@ export class CadastroService {
       { key: '8', value: '' },
       { key: '9', value: '' },
     ]
+    // let listaMusicas = Array.from({ length: 10 }, (_, i) => ({ key: i.toString(), value: '' }));
     try {
       await this.http.post('https://musictaste-backend.onrender.com/usuarios', { username: username, password: password, avatar: avatarUsuario, musicas: listaMusicas }).toPromise();
     } catch (error) {
