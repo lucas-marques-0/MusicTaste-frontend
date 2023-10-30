@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "type": "module",
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -21,6 +22,7 @@
     "@dicebear/avatars-identicon-sprites": "^4.10.8",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
     "dicebear": "^7.0.1",
     "fastify": "^4.23.2",
     "fastify-cors": "^3.0.3",

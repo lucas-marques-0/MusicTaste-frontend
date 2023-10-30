@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
 import * as bcrypt from 'bcrypt';
 
-
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
