@@ -19,8 +19,9 @@ export class LoginService {
   }
 
   async verifyPassword(inputUsername: any, inputPassword: any): Promise<boolean> {
-    const response: any = await this.http.get(`https://musictaste-backend.onrender.com/login/${inputUsername}`).toPromise();
-    const storedPassword = response.password;
+    const usuarios = await this.buscarUsuarios();
+    const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === inputUsername);
+    const storedPassword = usuarioEncontrado.password;
     const [storedSalt, storedHash] = storedPassword.split(':');
     const salt = CryptoJS.enc.Hex.parse(storedSalt);
     const key = CryptoJS.PBKDF2(inputPassword, salt, { keySize: 256 / 32, iterations: 1000 });
