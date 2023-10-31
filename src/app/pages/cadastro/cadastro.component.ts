@@ -29,7 +29,8 @@ export class CadastroComponent {
         if(await this.verificarNomeUsuarioJaExiste()) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          await this.cadastroService.adicionarUsuario(this.username.trim(), this.password);
+          const hashedPassword = await this.cadastroService.hashPassword(this.password);
+          await this.cadastroService.adicionarUsuario(this.username.trim(), hashedPassword);
           this.resetarValores();
           this.router.navigate(['/']);
         }

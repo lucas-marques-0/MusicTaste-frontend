@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as bcrypt from 'bcrypt';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,16 @@ export class CadastroService {
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
     }
+  }
+
+  async hashPassword(password: string): Promise<string> {
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    return hashedPassword;
+  }
+
+  async register(username: string, password: string) {
+    const hashedPassword = await this.hashPassword(password);
   }
   
 }
