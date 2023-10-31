@@ -21,11 +21,9 @@ export class LoginComponent {
       this.resetarValores();
       this.avisarCamposInvalidos();
     } else {
-      const usuarios = await this.loginService.buscarUsuarios();
-      const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === this.username);
-      console.log(usuarioEncontrado)
-      const isAuthenticated = await this.loginService.verifyPassword(this.username.trim(), this.password, usuarioEncontrado.password);
-      console.log(isAuthenticated)
+      //const usuarios = await this.loginService.buscarUsuarios();
+      //const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === this.username);
+      const isAuthenticated = await this.loginService.verifyPassword(this.username, this.password);
       if (isAuthenticated) {
         this.resetarValores();
         this.router.navigate(['/home']);
