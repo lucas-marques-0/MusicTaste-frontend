@@ -16,4 +16,13 @@ export class LoginService {
       console.error('Erro ao buscar usuários:', error);
     }
   }
+
+  async verifyPassword(username: string, inputPassword: string, storedPassword: string): Promise<boolean> {
+    const [storedSalt, storedHash] = storedPassword.split(':');
+    const salt = CryptoJS.enc.Hex.parse(storedSalt);
+    const key = CryptoJS.PBKDF2(inputPassword, salt, { keySize: 256 / 32, iterations: 1000 });
+    const hash = CryptoJS.SHA256(key);
+    const inputHash = hash.toString(CryptoJS.enc.Hex);
+    return inputHash === storedHash;
+  }
 }
