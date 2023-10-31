@@ -17,7 +17,7 @@ export class LoginService {
     }
   }
 
-  async verifyPassword(username: string, inputPassword: string, storedPassword: string): Promise<boolean> {
+  async verifyPassword(username: any, inputPassword: any, storedPassword: any): Promise<boolean> {
     const [storedSalt, storedHash] = storedPassword.split(':');
     const salt = CryptoJS.enc.Hex.parse(storedSalt);
     const key = CryptoJS.PBKDF2(inputPassword, salt, { keySize: 256 / 32, iterations: 1000 });

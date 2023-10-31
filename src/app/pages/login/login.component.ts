@@ -24,6 +24,7 @@ export class LoginComponent {
       const usuarios = await this.loginService.buscarUsuarios();
       const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === this.username && usuario.password === this.password);
       const isAuthenticated = await this.loginService.verifyPassword(this.username.trim(), this.password, usuarioEncontrado.password);
+      console.log(isAuthenticated)
       if (isAuthenticated) {
         this.resetarValores();
         this.router.navigate(['/home']);
