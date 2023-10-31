@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as bcrypt from 'bcrypt';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -41,14 +41,17 @@ export class CadastroService {
     }
   }
 
-  async hashPassword(password: string): Promise<string> {
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    return hashedPassword;
+  hashPassword(password: string): string {
+    const salt = CryptoJS.lib.WordArray.random(128 / 8); 
+    const key = CryptoJS.PBKDF2(password, salt, { keySize: 256 / 32, iterations: 1000 });
+    const hash = CryptoJS.SHA256(key);
+    const saltHex = salt.toString(CryptoJS.enc.Hex);
+    const hashHex = hash.toString(CryptoJS.enc.Hex);
+    return `${saltHex}:${hashHex}`;
   }
 
   async register(username: string, password: string) {
-    const hashedPassword = await this.hashPassword(password);
+    const hashedPassword = this.hashPassword(password);
   }
   
 }
