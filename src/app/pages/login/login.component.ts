@@ -22,9 +22,9 @@ export class LoginComponent {
       this.avisarCamposInvalidos();
     } else {
       const usuarios = await this.loginService.buscarUsuarios();
-      const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === this.username && usuario.password === this.password);
+      const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === this.username);
       console.log(usuarioEncontrado)
-      const isAuthenticated = await this.loginService.verifyPassword(this.username.trim(), this.password, usuarioEncontrado[0].password);
+      const isAuthenticated = await this.loginService.verifyPassword(this.username.trim(), this.password, usuarioEncontrado.password);
       console.log(isAuthenticated)
       if (isAuthenticated) {
         this.resetarValores();
