@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
+const bcrypt = require('bcrypt')
 
 @Component({
   selector: 'app-cadastro',
@@ -10,41 +11,33 @@ import { CadastroService } from './cadastro.service';
 export class CadastroComponent {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
-  username: string = '';
-  password: string = '';
+  email: string = '';
+  senha: string = '';
   
   cadastroInvalido: boolean = false;
   nomeUsuarioJaExiste: boolean = false;
   nomeUsuarioComEspacos: boolean = false;
 
   async onSubmit() {
-    if (!this.username || !this.password) {
+    if (!this.email || !this.senha) {
       this.resetarValores();
       this.avisarCadastroInvalido();
     } else {
-      if(this.username.trim().includes(' ')) {
-        this.username = '';
+      if(this.email.trim().includes(' ')) {
+        this.email = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
-        if(await this.verificarNomeUsuarioJaExiste()) {
+        if(await this.cadastroService.verificarUsuarioExistente(this.email)) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          const hashedPassword = await this.cadastroService.hashPassword(this.password);
-          await this.cadastroService.adicionarUsuario(this.username.trim(), hashedPassword);
+          //const hashedPassword = await this.cadastroService.hashPassword(this.password);
+          const senhaCriptografada = bcrypt.hashSync(this.senha, 10)
+          console.log(senhaCriptografada)
+          await this.cadastroService.adicionarUsuario(this.email.trim(), senhaCriptografada);
           this.resetarValores();
           this.router.navigate(['/']);
         }
       }
-    }
-  }
-
-  async verificarNomeUsuarioJaExiste() {
-    const usuarios = await this.cadastroService.buscarUsuarios();
-    const usuariosIguais = usuarios.filter((usuario: any) => usuario.username == this.username)
-    if(usuariosIguais.length > 0){
-      return true
-    } else {
-      return false
     }
   }
 
@@ -70,8 +63,8 @@ export class CadastroComponent {
   }
 
   resetarValores() {
-    this.username = '';
-    this.password = '';
+    this.email = '';
+    this.senha = '';
   }
 
   telaLogin() {

@@ -32,6 +32,11 @@ export class CadastroService {
     }
   }  
 
+  async verificarUsuarioExistente(email: any): Promise<boolean> {
+    const usuariosCadastrados: any = this.buscarUsuarios();
+    return usuariosCadastrados.find((user: any) => { email === user.email});
+  }
+
   async buscarUsuarios(): Promise<any> {
     try {
       const usuariosCadastrados = await this.http.get('https://musictaste-backend.onrender.com/usuarios').toPromise();
@@ -48,10 +53,6 @@ export class CadastroService {
     const saltHex = salt.toString(CryptoJS.enc.Hex);
     const hashHex = hash.toString(CryptoJS.enc.Hex);
     return `${saltHex}:${hashHex}`;
-  }
-
-  async register(username: string, password: string) {
-    const hashedPassword = this.hashPassword(password);
   }
   
 }
