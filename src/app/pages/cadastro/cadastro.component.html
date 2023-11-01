@@ -5,11 +5,11 @@
         <form class="cadastro-form" (submit)="onSubmit()">
             <div class="form-group">
                 <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="crie um login" required>
+                <input type="text" id="username" name="username" [(ngModel)]="email" placeholder="crie um login" required>
             </div>
             <div class="form-group">
                 <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="crie uma senha" required>
+                <input type="password" id="password" name="password" [(ngModel)]="senha" placeholder="crie uma senha" required>
             </div>
             <span *ngIf="cadastroInvalido">Preencha todos os campos :/</span>
             <span *ngIf="nomeUsuarioJaExiste">Nome de usuário já existe :/</span>
