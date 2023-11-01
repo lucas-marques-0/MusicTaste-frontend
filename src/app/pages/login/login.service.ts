@@ -11,7 +11,7 @@ export class LoginService {
 
   async buscarUsuarios(): Promise<any> {
     try {
-      const usuariosCadastrados = await this.http.get('https://musictaste-backend.onrender.com/usuarios/criar').toPromise();
+      const usuariosCadastrados = await this.http.get('https://musictaste-backend.onrender.com/usuarios').toPromise();
       return usuariosCadastrados;
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
@@ -21,7 +21,7 @@ export class LoginService {
   async verifyPassword(inputUsername: any, inputPassword: any): Promise<boolean> {
     //const usuarios = await this.buscarUsuarios();
     //const usuarioEncontrado = usuarios.find((usuario: any) => usuario.username === inputUsername);
-    const usuarioEncontrado: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/login`, inputUsername).toPromise();
+    const usuarioEncontrado: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${inputUsername}`).toPromise();
     const storedPassword = usuarioEncontrado.password;
     const [storedSalt, storedHash] = storedPassword.split(':');
     const salt = CryptoJS.enc.Hex.parse(storedSalt);
