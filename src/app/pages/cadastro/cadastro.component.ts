@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
-const bcrypt = require('bcrypt')
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-cadastro',
