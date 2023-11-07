@@ -30,7 +30,9 @@
     "jsonwebtoken": "^9.0.2",
     "postgres": "^3.3.5",
     "rxjs": "~7.8.0",
+    "stream": "^0.0.2",
     "tslib": "^2.3.0",
+    "util": "^0.12.5",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -50,8 +52,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.0.2"
-  },
-  "browser": {
-    "crypto": false
   }
 }
