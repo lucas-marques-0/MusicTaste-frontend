@@ -10,23 +10,11 @@ export class CadastroService {
 
   avatarUrl: any = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed='
 
-  async adicionarUsuario(username: any, password: any): Promise<any> {
-    let avatarUsuario = this.avatarUrl + username
-    let listaMusicas = [
-      { key: '0', value: '' },
-      { key: '1', value: '' },
-      { key: '2', value: '' },
-      { key: '3', value: '' },
-      { key: '4', value: '' },
-      { key: '5', value: '' },
-      { key: '6', value: '' },
-      { key: '7', value: '' },
-      { key: '8', value: '' },
-      { key: '9', value: '' },
-    ]
-    // let listaMusicas = Array.from({ length: 10 }, (_, i) => ({ key: i.toString(), value: '' }));
+  async adicionarUsuario(usuario: any, email: any, senha: any): Promise<any> {
+    let avatarUsuario = this.avatarUrl + usuario;
+    let listaMusicas = Array.from({ length: 10 }, (value, key) => ({ key: key.toString(), value: '' }));
     try {
-      await this.http.post('https://musictaste-backend.onrender.com/usuarios', { username: username, password: password, avatar: avatarUsuario, musicas: listaMusicas }).toPromise();
+      await this.http.post('https://musictaste-backend.onrender.com/usuarios', { usuario: usuario, email: email, senha: senha, avatar: avatarUsuario, musicas: listaMusicas }).toPromise();
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error); 
     }

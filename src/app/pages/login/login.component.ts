@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +12,25 @@ import { LoginService } from './login.service';
 export class LoginComponent {
   constructor(private router: Router, private loginService: LoginService) { }
 
-  username: string = '';
+  email: string = '';
   password: string = '';
   
   loginIncorreto: boolean = false;
   camposInvalidos: boolean = false;
 
   async onSubmit() {
-    if (!this.username || !this.password) {
+    if (!this.email || !this.password) {
       this.resetarValores();
       this.avisarCamposInvalidos();
     } else {
-      const isAuthenticated = await this.loginService.verifyPassword(this.username, this.password);
-      if (isAuthenticated) {
+      const usuarioEncontrado: any = this.loginService.verificarUsuarioExistente(this.email);
+      if (usuarioEncontrado) {
+        const senhaCorreta = bcrypt.compareSync(this.password, usuarioEncontrado.password);
+        if (senhaCorreta) {
+          this.criarToken(usuarioEncontrado);
+        } else {
+          this.avisarLoginIncorreto();
+        }
         this.resetarValores();
         this.router.navigate(['/home']);
       } else {
@@ -31,6 +39,11 @@ export class LoginComponent {
     }
   }
 
+  criarToken(usuario: any) {
+    const token = jwt.sign({ id: usuario.id, email: usuario.email }, 'codigo-do-jwt', { expiresIn: '1d' });
+    return { token, usuario }
+  }
+ 
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
     const usuarioEncontrado = usuarios.find((usuario) => usuario.username === username && usuario.password === password);
     if(usuarioEncontrado) {
@@ -56,7 +69,7 @@ export class LoginComponent {
   }
 
   resetarValores() {
-    this.username = '';
+    this.email = '';
     this.password = '';
   }
 

@@ -11,6 +11,7 @@ import * as bcrypt from 'bcryptjs';
 export class CadastroComponent {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
+  usuario: string = '';
   email: string = '';
   senha: string = '';
   
@@ -19,21 +20,19 @@ export class CadastroComponent {
   nomeUsuarioComEspacos: boolean = false;
 
   async onSubmit() {
-    if (!this.email || !this.senha) {
+    if (!this.email || !this.senha || !this.usuario) {
       this.resetarValores();
       this.avisarCadastroInvalido();
     } else {
-      if(this.email.trim().includes(' ')) {
-        this.email = '';
+      if(this.usuario.trim().includes(' ')) {
+        this.usuario = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
         if(await this.cadastroService.verificarUsuarioExistente(this.email)) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          //const hashedPassword = await this.cadastroService.hashPassword(this.password);
           const senhaCriptografada = bcrypt.hashSync(this.senha, 10)
-          console.log(senhaCriptografada)
-          await this.cadastroService.adicionarUsuario(this.email.trim(), senhaCriptografada);
+          await this.cadastroService.adicionarUsuario(this.usuario, this.email.trim(), senhaCriptografada);
           this.resetarValores();
           this.router.navigate(['/']);
         }

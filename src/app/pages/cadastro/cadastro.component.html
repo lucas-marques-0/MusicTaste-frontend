@@ -5,7 +5,11 @@
         <form class="cadastro-form" (submit)="onSubmit()">
             <div class="form-group">
                 <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username" [(ngModel)]="email" placeholder="crie um login" required>
+                <input type="text" id="username" name="username" [(ngModel)]="usuario" placeholder="crie um nome de usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="coloque seu melhor email" required>
             </div>
             <div class="form-group">
                 <label for="password">Senha:</label>
