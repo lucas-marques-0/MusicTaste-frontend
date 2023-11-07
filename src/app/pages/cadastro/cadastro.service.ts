@@ -10,8 +10,8 @@ export class CadastroService {
   avatarUrl: any = 'https://api.dicebear.com/7.x/bottts-neutral/svg?seed='
 
   async adicionarUsuario(usuario: any, email: any, senha: any): Promise<any> {
-    let avatarUsuario = this.avatarUrl + usuario;
-    let listaMusicas = Array.from({ length: 10 }, (value, key) => ({ key: key.toString(), value: '' }));
+    const avatarUsuario = this.avatarUrl + usuario;
+    const listaMusicas = Array.from({ length: 10 }, (value, key) => ({ key: key.toString(), value: '' }));
     try {
       await this.http.post('https://musictaste-backend.onrender.com/usuarios', { usuario: usuario, email: email, senha: senha, avatar: avatarUsuario, musicas: listaMusicas }).toPromise();
     } catch (error) {
