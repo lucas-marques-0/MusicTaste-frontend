@@ -32,14 +32,5 @@ export class CadastroService {
       console.error('Erro ao buscar usuários:', error);
     }
   }
-
-  hashPassword(password: string): string {
-    const salt = CryptoJS.lib.WordArray.random(128 / 8); 
-    const key = CryptoJS.PBKDF2(password, salt, { keySize: 256 / 32, iterations: 1000 });
-    const hash = CryptoJS.SHA256(key);
-    const saltHex = salt.toString(CryptoJS.enc.Hex);
-    const hashHex = hash.toString(CryptoJS.enc.Hex);
-    return `${saltHex}:${hashHex}`;
-  }
   
 }
