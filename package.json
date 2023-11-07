@@ -20,6 +20,7 @@
     "@angular/router": "^16.0.0",
     "@dicebear/avatars-identicon-sprites": "^4.10.8",
     "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "dicebear": "^7.0.1",
     "fastify": "^4.23.2",
@@ -50,8 +51,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.0.2"
-  },
-  "browser": {
-    "crypto": false
   }
 }
