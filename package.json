@@ -55,6 +55,7 @@
     "webpack": "^5.89.0"
   },
   "browser": {
-    "crypto": false
+    "crypto": false,
+    "stream": false
   }
 }
