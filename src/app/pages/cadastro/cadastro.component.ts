@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
 import * as bcrypt from 'bcryptjs';
+import 'crypto-browserify';
 
 @Component({
   selector: 'app-cadastro',
