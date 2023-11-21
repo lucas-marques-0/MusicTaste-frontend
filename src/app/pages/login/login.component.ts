@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { AES } from 'crypto-js';
 
 @Component({
   selector: 'app-login',
