@@ -20,7 +20,7 @@
     "@angular/router": "^16.0.0",
     "@dicebear/avatars-identicon-sprites": "^4.10.8",
     "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^2.3.0",
     "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "dicebear": "^7.0.1",
