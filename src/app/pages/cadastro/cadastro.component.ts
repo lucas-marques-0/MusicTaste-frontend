@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
-import * as bcrypt from 'bcryptjs';
-import 'crypto-browserify';
+
+
 
 @Component({
   selector: 'app-cadastro',
@@ -32,8 +32,8 @@ export class CadastroComponent {
         if(await this.cadastroService.verificarUsuarioExistente(this.email)) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          const senhaCriptografada = bcrypt.hashSync(this.senha, 10)
-          await this.cadastroService.adicionarUsuario(this.usuario, this.email.trim(), senhaCriptografada);
+          //const senhaCriptografada = bcrypt.hashSync(this.senha, 10)
+          //await this.cadastroService.adicionarUsuario(this.usuario, this.email.trim(), senhaCriptografada);
           this.resetarValores();
           this.router.navigate(['/']);
         }
