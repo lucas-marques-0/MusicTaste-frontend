@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
-import * as bcrypt from 'bcryptjs';
+import * as crypto from 'crypto-js'
 
 @Component({
   selector: 'app-cadastro',
@@ -11,28 +11,28 @@ import * as bcrypt from 'bcryptjs';
 export class CadastroComponent {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
-  usuario: string = '';
+  user: string = '';
   email: string = '';
-  senha: string = '';
+  password: string = '';
   
   cadastroInvalido: boolean = false;
   nomeUsuarioJaExiste: boolean = false;
   nomeUsuarioComEspacos: boolean = false;
 
   async onSubmit() {
-    if (!this.email || !this.senha || !this.usuario) {
+    if (!this.email || !this.password || !this.user) {
       this.resetarValores();
       this.avisarCadastroInvalido();
     } else {
-      if(this.usuario.trim().includes(' ')) {
-        this.usuario = '';
+      if(this.user.trim().includes(' ')) {
+        this.user = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
         if(await this.cadastroService.verificarUsuarioExistente(this.email)) {
           this.avisarNomeUsuarioJaExiste()
         } else {
-          const senhaCriptografada = bcrypt.hashSync(this.senha, 10)
-          await this.cadastroService.adicionarUsuario(this.usuario, this.email.trim(), senhaCriptografada);
+          const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
+          await this.cadastroService.adicionarUsuario(this.user, this.email.trim(), senhaCriptografada);
           this.resetarValores();
           this.router.navigate(['/']);
         }
@@ -63,7 +63,7 @@ export class CadastroComponent {
 
   resetarValores() {
     this.email = '';
-    this.senha = '';
+    this.password = '';
   }
 
   telaLogin() {

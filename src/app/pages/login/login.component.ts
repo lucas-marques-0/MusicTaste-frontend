@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
+import * as crypto from 'crypto-js'
 
 @Component({
   selector: 'app-login',
@@ -25,8 +24,8 @@ export class LoginComponent {
     } else {
       const usuarioEncontrado: any = this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
-        const senhaCorreta = bcrypt.compareSync(this.password, usuarioEncontrado.password);
-        if (senhaCorreta) {
+        const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
+        if (senhaCorreta === usuarioEncontrado.password) {
           this.criarToken(usuarioEncontrado);
         } else {
           this.avisarLoginIncorreto();
@@ -40,8 +39,8 @@ export class LoginComponent {
   }
 
   criarToken(usuario: any) {
-    const token = jwt.sign({ id: usuario.id, email: usuario.email }, 'codigo-do-jwt', { expiresIn: '1d' });
-    return { token, usuario }
+    //const token = jwt.sign({ id: usuario.id, email: usuario.email }, 'codigo-do-jwt', { expiresIn: '1d' });
+    //return { token, usuario }
   }
  
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
