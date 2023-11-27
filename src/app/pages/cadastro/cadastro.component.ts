@@ -11,7 +11,7 @@ import * as crypto from 'crypto-js'
 export class CadastroComponent {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
-  user: string = '';
+  username: string = '';
   email: string = '';
   password: string = '';
   
@@ -20,19 +20,19 @@ export class CadastroComponent {
   nomeUsuarioComEspacos: boolean = false;
 
   async onSubmit() {
-    if (!this.email || !this.password || !this.user) {
+    if (!this.email || !this.password || !this.username) {
       this.resetarValores();
       this.avisarCadastroInvalido();
     } else {
-      if(this.user.trim().includes(' ')) {
-        this.user = '';
+      if(this.username.trim().includes(' ')) {
+        this.username = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
-        if(await this.cadastroService.verificarUsuarioExistente(this.email)) {
+        if(await !this.cadastroService.verificarUsuarioExistente(this.email)) {
           this.avisarNomeUsuarioJaExiste()
         } else {
           const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
-          await this.cadastroService.adicionarUsuario(this.user, this.email.trim(), senhaCriptografada);
+          await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada);
           this.resetarValores();
           this.router.navigate(['/']);
         }
