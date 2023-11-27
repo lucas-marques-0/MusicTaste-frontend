@@ -32,7 +32,7 @@ export class CadastroService {
 
   async verificarUsuarioExistente(email: any): Promise<boolean> {
     const usuariosCadastrados: any = await this.buscarUsuarios();
-    console.log(usuariosCadastrados)
+    console.log(usuariosCadastrados, usuariosCadastrados.find((user: any) => { email === user.email}))
     return usuariosCadastrados.find((user: any) => { email === user.email});
   }
 

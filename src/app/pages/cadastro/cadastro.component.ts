@@ -28,7 +28,8 @@ export class CadastroComponent {
         this.username = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
-        if(await !this.cadastroService.verificarUsuarioExistente(this.email)) {
+        const usuarioEncontrado = await this.cadastroService.verificarUsuarioExistente(this.email);
+        if(!usuarioEncontrado) {
           this.avisarNomeUsuarioJaExiste()
         } else {
           const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
