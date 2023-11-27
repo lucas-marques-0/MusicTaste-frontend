@@ -22,7 +22,7 @@ export class LoginComponent {
       this.resetarValores();
       this.avisarCamposInvalidos();
     } else {
-      const usuarioEncontrado: any = this.loginService.verificarUsuarioExistente(this.email);
+      const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
         const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
         if (senhaCorreta === usuarioEncontrado.password) {
