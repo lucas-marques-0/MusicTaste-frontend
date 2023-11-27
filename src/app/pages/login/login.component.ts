@@ -23,6 +23,7 @@ export class LoginComponent {
       this.avisarCamposInvalidos();
     } else {
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
+      console.log(usuarioEncontrado)
       if (usuarioEncontrado) {
         const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
         if (senhaCorreta === usuarioEncontrado.password) {
