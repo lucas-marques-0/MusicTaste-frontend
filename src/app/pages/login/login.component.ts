@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import * as crypto from 'crypto-js'
-import * as jwt from 'jsonwebtoken'
 
 @Component({
   selector: 'app-login',
@@ -42,9 +40,9 @@ export class LoginComponent {
     }
   }
 
-  criarToken(usuario: any) {
-    return jwt.sign({ id: usuario.id, email: usuario.email }, 'segredo-do-jwt', { expiresIn: '1d' });
-  }
+  //criarToken(usuario: any) {
+    //return jwt.sign({ id: usuario.id, email: usuario.email }, 'segredo-do-jwt', { expiresIn: '1d' });
+  //}
  
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
     const usuarioEncontrado = usuarios.find((usuario) => usuario.username === username && usuario.password === password);
