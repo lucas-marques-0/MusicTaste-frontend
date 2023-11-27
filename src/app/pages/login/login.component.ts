@@ -26,12 +26,15 @@ export class LoginComponent {
       if (usuarioEncontrado) {
         const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
         if (senhaCorreta === usuarioEncontrado.password) {
-          this.criarToken(usuarioEncontrado);
+          console.log('foi')
+
+          //this.criarToken(usuarioEncontrado);
+
+          //this.resetarValores();
+          //this.router.navigate(['/home']);
         } else {
           this.avisarLoginIncorreto();
         }
-        this.resetarValores();
-        this.router.navigate(['/home']);
       } else {
         this.avisarLoginIncorreto();
       }

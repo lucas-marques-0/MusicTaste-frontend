@@ -33,8 +33,7 @@ export class CadastroComponent {
         const emailEncontrado = await this.cadastroService.verificarEmailExistente(this.email);
         if(usernameEncontrado) {
           this.avisarNomeUsuarioJaExiste();
-        }
-        if(emailEncontrado) {
+        } if(emailEncontrado) {
           this.avisarEmailUsuarioJaExiste();
         } else {
           const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
