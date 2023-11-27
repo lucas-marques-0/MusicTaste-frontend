@@ -17,6 +17,7 @@ export class CadastroComponent {
   
   cadastroInvalido: boolean = false;
   nomeUsuarioJaExiste: boolean = false;
+  emailUsuarioJaExiste: boolean = false;
   nomeUsuarioComEspacos: boolean = false;
 
   async onSubmit() {
@@ -28,9 +29,13 @@ export class CadastroComponent {
         this.username = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
-        const usuarioEncontrado = await this.cadastroService.verificarUsuarioExistente(this.email);
-        if(!usuarioEncontrado) {
-          this.avisarNomeUsuarioJaExiste()
+        const usernameEncontrado = await this.cadastroService.verificarUsernameExistente(this.username);
+        const emailEncontrado = await this.cadastroService.verificarEmailExistente(this.email);
+        if(!usernameEncontrado) {
+          this.avisarNomeUsuarioJaExiste();
+        }
+        if(!emailEncontrado) {
+          this.avisarEmailUsuarioJaExiste();
         } else {
           const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
           await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada);
@@ -52,6 +57,13 @@ export class CadastroComponent {
     this.nomeUsuarioJaExiste = true;
     setTimeout(() => {
       this.nomeUsuarioJaExiste = false;
+    }, 3000);
+  }
+
+  avisarEmailUsuarioJaExiste() {
+    this.emailUsuarioJaExiste = true;
+    setTimeout(() => {
+      this.emailUsuarioJaExiste = false;
     }, 3000);
   }
 

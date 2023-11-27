@@ -17,6 +17,7 @@
             </div>
             <span *ngIf="cadastroInvalido">Preencha todos os campos :/</span>
             <span *ngIf="nomeUsuarioJaExiste">Nome de usuário já existe :/</span>
+            <span *ngIf="emailUsuarioJaExiste">Email do usuário já existe :/</span>
             <span *ngIf="nomeUsuarioComEspacos">Espaços não são permitidos :/</span>
             <button type="submit">Cadastrar</button>
             <span class="cadastro-text">já tem cadastro? <span (click)="telaLogin()">Logar</span></span>
