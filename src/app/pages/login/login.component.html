@@ -12,7 +12,8 @@
                 <input type="password" id="password" name="password" [(ngModel)]="password" required>
             </div>
             <span *ngIf="camposInvalidos">Preencha todos os campos :/</span>
-            <span *ngIf="loginIncorreto">email ou senha incorretos :/</span>
+            <span *ngIf="emailIncorreto">Email incorreto, verifique :/</span>
+            <span *ngIf="senhaIncorreta">Senha incorreta, verifique :/</span>
             <button type="submit">Entrar</button>
             <span class="cadastro-text">sem login? <span (click)="telaCadastro()">Cadastre-se</span></span>
         </form>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import * as crypto from 'crypto-js'
+import * as jwt from 'jsonwebtoken'
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   
-  loginIncorreto: boolean = false;
+  emailIncorreto: boolean = false;
+  senhaIncorreta: boolean = false;
   camposInvalidos: boolean = false;
 
   async onSubmit() {
@@ -23,28 +25,25 @@ export class LoginComponent {
       this.avisarCamposInvalidos();
     } else {
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
-      console.log(usuarioEncontrado)
       if (usuarioEncontrado) {
-        const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
-        if (senhaCorreta === usuarioEncontrado.password) {
-          console.log('foi')
-
-          //this.criarToken(usuarioEncontrado);
-
+        this.loginService.logarUsuario(usuarioEncontrado.id, this.password);
+        
+        //const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
+        //if (senhaCorreta === usuarioEncontrado.password) {
+          //this.criarToken(usuarioEncontrado);  
           //this.resetarValores();
           //this.router.navigate(['/home']);
-        } else {
-          this.avisarLoginIncorreto();
-        }
+        //} else {
+          //this.avisarSenhaIncorreta();
+        //}
       } else {
-        this.avisarLoginIncorreto();
+        this.avisarEmailIncorreto();
       }
     }
   }
 
   criarToken(usuario: any) {
-    //const token = jwt.sign({ id: usuario.id, email: usuario.email }, 'codigo-do-jwt', { expiresIn: '1d' });
-    //return { token, usuario }
+    return jwt.sign({ id: usuario.id, email: usuario.email }, 'segredo-do-jwt', { expiresIn: '1d' });
   }
  
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
@@ -57,10 +56,17 @@ export class LoginComponent {
     }
   }
 
-  avisarLoginIncorreto() {
-    this.loginIncorreto = true;
+  avisarEmailIncorreto() {
+    this.emailIncorreto = true;
     setTimeout(() => {
-      this.loginIncorreto = false;
+      this.emailIncorreto = false;
+    }, 3000);
+  }
+
+  avisarSenhaIncorreta() {
+    this.senhaIncorreta = true;
+    setTimeout(() => {
+      this.senhaIncorreta = false;
     }, 3000);
   }
 

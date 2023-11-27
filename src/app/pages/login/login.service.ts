@@ -17,6 +17,14 @@ export class LoginService {
     }
   }
 
+  async logarUsuario(userID: any, password: any): Promise<any> {
+    try {
+      await this.http.post('https://musictaste-backend.onrender.com/usuarios/login', { userID: userID, password: password }).toPromise();
+    } catch (error) {
+      console.error('Erro ao adicionar usuário:', error); 
+    }
+  }
+
   async verificarUsuarioExistente(email: any) {
     const usuariosCadastrados: any = await this.buscarUsuarios();
     return usuariosCadastrados.find((user: any) => email === user.email);
