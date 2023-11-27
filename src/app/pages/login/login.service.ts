@@ -19,6 +19,6 @@ export class LoginService {
 
   async verificarUsuarioExistente(email: any) {
     const usuariosCadastrados: any = await this.buscarUsuarios();
-    return usuariosCadastrados.find((user: any) => { email === user.email});
+    return usuariosCadastrados.find((user: any) => email === user.email);
   }
 }
