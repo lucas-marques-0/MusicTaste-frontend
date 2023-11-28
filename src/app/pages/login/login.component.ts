@@ -32,10 +32,6 @@ export class LoginComponent {
       }
     }
   }
-
-  //criarToken(usuario: any) {
-    //return jwt.sign({ id: usuario.id, email: usuario.email }, 'segredo-do-jwt', { expiresIn: '1d' });
-  //}
  
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
     const usuarioEncontrado = usuarios.find((usuario) => usuario.username === username && usuario.password === password);
