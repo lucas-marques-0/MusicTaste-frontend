@@ -19,7 +19,7 @@ export class LoginService {
 
   async logarUsuario(userID: any, password: any): Promise<any> {
     try {
-      await this.http.post('https://musictaste-backend.onrender.com/usuarios/login', { userID: userID, password: password }).toPromise();
+      await this.http.post('https://musictaste-backend.onrender.com/usuarios', { userID: userID, password: password, action: 'login' }).toPromise();
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error); 
     }

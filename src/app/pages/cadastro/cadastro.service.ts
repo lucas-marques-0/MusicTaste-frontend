@@ -24,7 +24,7 @@ export class CadastroService {
       { 9: '' },
     ]
     try {
-      await this.http.post('https://musictaste-backend.onrender.com/usuarios', { username: usuario, email: email, password: senha, avatar: avatarUsuario, musicas: listaMusicas }).toPromise();
+      await this.http.post('https://musictaste-backend.onrender.com/usuarios', { username: usuario, email: email, password: senha, avatar: avatarUsuario, musicas: listaMusicas, action: 'cadastro' }).toPromise();
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error); 
     }
