@@ -25,16 +25,8 @@ export class LoginComponent {
     } else {
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
-        this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
-        
-        //const senhaCorreta = crypto.SHA256(this.password).toString(crypto.enc.Hex);
-        //if (senhaCorreta === usuarioEncontrado.password) {
-          //this.criarToken(usuarioEncontrado);  
-          //this.resetarValores();
-          //this.router.navigate(['/home']);
-        //} else {
-          //this.avisarSenhaIncorreta();
-        //}
+        const login = await this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
+        console.log(login, login.token)
       } else {
         this.avisarEmailIncorreto();
       }
