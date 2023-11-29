@@ -26,7 +26,10 @@ export class LoginComponent {
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
         const login = await this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
-        console.log(login, login.token)
+        if(login.token) {
+          this.resetarValores();
+          this.router.navigate(['/home']);
+        }
       } else {
         this.avisarEmailIncorreto();
       }
