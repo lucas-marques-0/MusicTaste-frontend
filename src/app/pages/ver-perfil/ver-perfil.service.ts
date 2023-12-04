@@ -8,7 +8,6 @@ export class VerPerfilService {
 
   constructor(private http: HttpClient) { }
 
-
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
     console.log('Token:', token);
