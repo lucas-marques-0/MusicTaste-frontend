@@ -17,7 +17,7 @@ export class VerPerfilService {
     });
 
     try {
-      const infosUsuario: any = await this.http.get('https://musictaste-backend.onrender.com/usuarios/' + userID + { headers }).toPromise();
+      const infosUsuario: any = await this.http.get('https://musictaste-backend.onrender.com/usuarios/' + userID, { headers }).toPromise();
       console.log('Response Headers:', infosUsuario.headers);
       return infosUsuario;
     } catch (error) {
