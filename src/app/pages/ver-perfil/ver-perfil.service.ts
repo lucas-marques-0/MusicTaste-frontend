@@ -15,6 +15,9 @@ export class VerPerfilService {
       'Authorization': `Bearer ${token}`,
       'Access-Control-Allow-Origin': 'https://musictasteshare.vercel.app'
     });
+    headers.set("Access-Control-Allow-Origin", "*")
+    headers.set("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+    headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
     const options = { headers };
     try {
       const url = `https://musictaste-backend.onrender.com/usuarios/${userID}`;
