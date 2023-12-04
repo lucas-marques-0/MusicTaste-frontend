@@ -13,7 +13,7 @@ export class VerPerfilService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': 'https://musictasteshare.vercel.app'
     });
 
     try {
