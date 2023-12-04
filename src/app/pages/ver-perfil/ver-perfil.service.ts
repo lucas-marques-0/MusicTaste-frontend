@@ -8,19 +8,16 @@ export class VerPerfilService {
 
   constructor(private http: HttpClient) { }
 
+
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
     console.log('Token:', token);
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-cache',
-      'Content-Type': 'application/json',
-      
       'Authorization': `Bearer ${token}`,
     });
 
     try {
-      const infosUsuario: any = await this.http.get('https://musictaste-backend.onrender.com/usuarios/' + userID, { headers }).toPromise();
+      const infosUsuario: any = await this.http.get('https://musictaste-backend.onrender.com/usuarios/' + userID + { headers }).toPromise();
       console.log('Response Headers:', infosUsuario.headers);
       return infosUsuario;
     } catch (error) {
