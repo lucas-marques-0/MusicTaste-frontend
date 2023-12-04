@@ -15,9 +15,10 @@ export class VerPerfilService {
       'Authorization': `Bearer ${token}`,
       'Access-Control-Allow-Origin': 'https://musictasteshare.vercel.app'
     });
-
+    const options = { headers };
     try {
-      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { headers }).toPromise();
+      const url = `https://musictaste-backend.onrender.com/usuarios/${userID}`;
+      const infosUsuario: any = await this.http.get(url, options).toPromise();
       return infosUsuario;
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
