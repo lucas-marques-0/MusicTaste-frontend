@@ -11,20 +11,13 @@ export class VerPerfilService {
 
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
-    console.log('Token:', token);
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      }),
-      withCredentials: false, 
-      responseType: 'text' as 'json', 
-      observe: 'response' as 'body'
-    };
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Access-Control-Allow-Origin': '*'
+    });
 
     try {
-      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`, options).toPromise();
-      console.log('Response Headers:', infosUsuario.headers);
+      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { headers }).toPromise();
       return infosUsuario;
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
