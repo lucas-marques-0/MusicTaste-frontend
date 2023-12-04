@@ -12,6 +12,10 @@ export class VerPerfilService {
     const token = localStorage.getItem('token');
     console.log('Token:', token);
     const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'application/json',
+      
       'Authorization': `Bearer ${token}`,
     });
 
