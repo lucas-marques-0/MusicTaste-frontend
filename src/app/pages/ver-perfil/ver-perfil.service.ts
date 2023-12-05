@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as cors from 'cors';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,6 @@ export class VerPerfilService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Authorization, X-Super-Header',
     });
 
     try {
