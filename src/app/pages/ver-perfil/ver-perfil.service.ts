@@ -12,7 +12,7 @@ export class VerPerfilService {
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'token': `${token}`,
+      'Authorization': `${token}`,
     });
 
     try {
