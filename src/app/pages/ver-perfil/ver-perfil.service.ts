@@ -10,7 +10,12 @@ export class VerPerfilService {
   constructor(private http: HttpClient) { }
 
   verificarToken(token: any) {
-    return jwt.verify(token, 'segredo-do-jwt');
+    try {
+      const tokenValido: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`).toPromise();
+      return tokenValido;
+    } catch (error) {
+      console.error('Erro ao buscar TOKEN:', error);
+    }
   }
 
   async buscarInfosUsuario(userID: any): Promise<any> {
