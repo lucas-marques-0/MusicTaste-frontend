@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { VerPerfilService } from './ver-perfil.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as jwt from 'jsonwebtoken';
 
 @Component({
   selector: 'app-ver-perfil',
@@ -32,9 +31,8 @@ export class VerPerfilComponent {
 
   async ngOnInit() {
     const token: any = localStorage.getItem('token')
-    const decodedToken = jwt.verify(token, 'segredo-do-jwt');
-    if(decodedToken) {
-      console.log(token, decodedToken)
+    if(token) {
+      console.log(token)
       this.userID = this.route.snapshot.paramMap.get('id')
       await this.buscarInfosUsuario(this.userID)
       this.isLoading = false
