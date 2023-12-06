@@ -9,9 +9,9 @@ export class VerPerfilService {
 
   constructor(private http: HttpClient) { }
 
-  verificarToken(token: any) {
+  async verificarToken(token: any) {
     try {
-      const tokenValido: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`).toPromise();
+      const tokenValido: any = await this.http.get(`https://musictaste-backend.onrender.com/verificar-token/${token}`).toPromise();
       return tokenValido;
     } catch (error) {
       console.error('Erro ao buscar TOKEN:', error);
