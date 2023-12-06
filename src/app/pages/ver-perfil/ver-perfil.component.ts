@@ -30,10 +30,8 @@ export class VerPerfilComponent {
   isLoading: boolean = true
 
   async ngOnInit() {
-    const token: any = localStorage.getItem('token')
-    const tokenValido = await this.verPerfilService.verificarToken(token);
-    if(tokenValido) {
-      console.log(token, tokenValido)
+    const token: any = localStorage.getItem('token');
+    if(token) {
       this.userID = this.route.snapshot.paramMap.get('id')
       await this.buscarInfosUsuario(this.userID)
       this.isLoading = false
