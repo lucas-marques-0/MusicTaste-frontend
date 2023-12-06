@@ -22,6 +22,7 @@
     "assert": "^2.1.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.2.0",
     "dicebear": "^7.0.1",
     "fastify": "^4.23.2",
