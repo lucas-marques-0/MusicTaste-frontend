@@ -16,6 +16,7 @@ export class VerPerfilService {
     });
 
     try {
+      console.log(token, headers)
       const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { headers: headers }).toPromise();
       return infosUsuario;
     } catch (error) {
