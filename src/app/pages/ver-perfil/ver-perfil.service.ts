@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken'
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +9,8 @@ export class VerPerfilService {
 
   constructor(private http: HttpClient) { }
 
-  async verificarToken(token: any) {
-    try {
-      const tokenValido: any = await this.http.get(`https://musictaste-backend.onrender.com/verificar-token/${token}`).toPromise();
-      return tokenValido;
-    } catch (error) {
-      console.error('Erro ao buscar TOKEN:', error);
-    }
+  verificarToken(token: any) {
+    return jwt.verify(token, 'segredo-do-jwt');
   }
 
   async buscarInfosUsuario(userID: any): Promise<any> {
