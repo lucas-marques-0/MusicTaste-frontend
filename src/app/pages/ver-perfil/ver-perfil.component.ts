@@ -37,6 +37,7 @@ export class VerPerfilComponent {
       await this.buscarInfosUsuario(this.userID)
       this.isLoading = false
     } else {
+      await this.router.navigate(['/']);
       console.log('usuario não habilitado')
     }
   }
