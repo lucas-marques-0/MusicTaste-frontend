@@ -41,6 +41,10 @@ export class VerPerfilComponent {
     }
   }
 
+  fazerObjectKeys(lista: any) {
+    return Object.keys(lista)
+  }
+
   mostrarMusica(musicaUrl: any) {
     if(musicaUrl.includes('intl-pt')) {
       return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('intl-pt', 'embed'))
