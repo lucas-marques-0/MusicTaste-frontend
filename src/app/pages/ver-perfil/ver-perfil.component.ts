@@ -12,7 +12,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class VerPerfilComponent {
   constructor(private route: ActivatedRoute, private router: Router, private verPerfilService: VerPerfilService, private sanitizer: DomSanitizer) { }
 
-  userID: any = '';
   usuarioInfos: any = [];
   musicasUsuario: any = [];
   textosMusicas: any = [
@@ -27,29 +26,25 @@ export class VerPerfilComponent {
     'Música que transmite mais sentimentos.',
     'Música preferida pro alto falante.'
   ];
-  isLoading: boolean = true
+  isLoading: boolean = true;
 
   async ngOnInit() {
-    this.userID = this.route.snapshot.paramMap.get('id')
-    const infosValidas: any = await this.buscarInfosUsuario(this.userID)
-    if (infosValidas) {
-      this.isLoading = false
-    } else {
+    const userID = this.route.snapshot.paramMap.get('id')
+    const userInfos = await this.verPerfilService.buscarInfosUsuario(userID)
+    if (!userInfos) {
       await this.router.navigate(['/'])
+    } else {
+      this.usuarioInfos = userInfos[0]     
+      this.musicasUsuario = this.usuarioInfos.musicas
+      this.isLoading = false
     }
-  }
-
-  async buscarInfosUsuario(userID: any) {
-    let userInfos = await this.verPerfilService.buscarInfosUsuario(userID);    
-    this.usuarioInfos = userInfos[0]     
-    this.musicasUsuario = this.usuarioInfos.musicas
   }
 
   mostrarMusica(musicaUrl: any) {
     if(musicaUrl.includes('intl-pt')) {
       return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('intl-pt', 'embed'))
     } else {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('/track/', '/embed/track/'));
+      return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('/track/', '/embed/track/'))
     }
   }
 

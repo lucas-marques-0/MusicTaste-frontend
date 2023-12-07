@@ -16,6 +16,7 @@ export class VerPerfilService {
       return await this.http.post(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: token }).toPromise();
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
+      return false
     }
   }
 }
