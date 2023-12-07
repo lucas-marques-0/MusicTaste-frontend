@@ -35,7 +35,7 @@ export class VerPerfilComponent {
       await this.router.navigate(['/'])
     } else {
       this.usuarioInfos = userInfosObj.userInfos[0]     
-      this.musicasUsuario = this.usuarioInfos.musicas
+      this.musicasUsuario = Object.keys(this.usuarioInfos.musicas)
       this.isLoading = false
     }
   }

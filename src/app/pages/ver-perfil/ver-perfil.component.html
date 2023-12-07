@@ -9,11 +9,11 @@
         </div>
         <div class="grid-musicas">
             <div *ngFor="let musica of musicasUsuario" class="card">
-                <h2>{{ textosMusicas[musica.key] }}</h2>
-                <div *ngIf="!musica.value">
+                <h2>{{ textosMusicas[musica] }}</h2>
+                <div *ngIf="!musica">
                     <p class="textoSemMusica">Infelizmente esse usuário ainda não respondeu a essa pergunta :/</p>
                 </div>
-                <div *ngIf="musica.value">
+                <div *ngIf="musica">
                     <iframe style="border-radius:12px" [src]="mostrarMusica(musica.value)" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
