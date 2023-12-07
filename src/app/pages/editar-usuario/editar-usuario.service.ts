@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class EditarUsuarioService {
 
   constructor(private http: HttpClient) { }
-
+  
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
     try {
@@ -19,8 +19,9 @@ export class EditarUsuarioService {
   }
 
   async atualizarMusicasUsuario(userID: any, musicasUsuario: any): Promise<any> {
+    const token = localStorage.getItem('token');
     try {
-      await this.http.put(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { userID, musicasUsuario }).toPromise();
+      await this.http.put(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: token, userID: userID, musicasUsuario: musicasUsuario }).toPromise();
     } catch (error) {
       console.error('Erro ao atualizar musicas do usuário:', error);
     }
