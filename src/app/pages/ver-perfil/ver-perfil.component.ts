@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { VerPerfilService } from './ver-perfil.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { verify } from 'jsonwebtoken';
 
 @Component({
   selector: 'app-ver-perfil',
@@ -31,11 +30,11 @@ export class VerPerfilComponent {
   isLoading: boolean = true
 
   async ngOnInit() {
-    const token: any = localStorage.getItem('token');
-    const tokenValido: any = verify(token, 'segredo-do-jwt');
+    const token: any = localStorage.getItem('token')
+    const tokenValido = await this.verPerfilService.buscarDadosVerPerfil(token);
     if(tokenValido) {
       this.userID = this.route.snapshot.paramMap.get('id')
-      await this.buscarInfosUsuario(this.userID)
+      await this.buscarInfosUsuario(this.userID);
       this.isLoading = false
     } else {
       await this.router.navigate(['/']);
@@ -44,7 +43,7 @@ export class VerPerfilComponent {
   }
 
   async buscarInfosUsuario(userID: any) {
-    let userInfos = await this.verPerfilService.buscarInfosUsuario(userID);    
+    let userInfos = await this.verPerfilService.buscarDadosVerPerfil(userID);    
     this.usuarioInfos = userInfos[0]     
     this.musicasUsuario = this.usuarioInfos.musicas
   }

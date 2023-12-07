@@ -9,23 +9,9 @@ export class VerPerfilService {
 
   constructor(private http: HttpClient) { }
 
-  async verificarToken(token: any) {
+  async buscarDadosVerPerfil(dado: any): Promise<any> {
     try {
-      const tokenValido: any = await this.http.get(`https://musictaste-backend.onrender.com/verificar-token/${token}`).toPromise();
-      return tokenValido;
-    } catch (error) {
-      console.error('Erro ao buscar TOKEN:', error);
-    }
-  }
-
-  async buscarInfosUsuario(userID: any): Promise<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-    });
-
-    try {
-      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`).toPromise();
+      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${dado}`).toPromise();
       return infosUsuario;
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
