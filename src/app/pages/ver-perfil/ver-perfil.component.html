@@ -10,7 +10,7 @@
         <div class="grid-musicas">
             <div *ngFor="let musica of musicasUsuario" class="card">
                 <h2>{{ textosMusicas[musica] }}</h2>
-                <div *ngIf="!musica">
+                <div *ngIf="musica == ''">
                     <p class="textoSemMusica">Infelizmente esse usuário ainda não respondeu a essa pergunta :/</p>
                 </div>
                 <div *ngIf="musica">

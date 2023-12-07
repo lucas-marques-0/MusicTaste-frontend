@@ -36,6 +36,7 @@ export class VerPerfilComponent {
     } else {
       this.usuarioInfos = userInfosObj.userInfos[0]     
       this.musicasUsuario = Object.keys(this.usuarioInfos.musicas)
+      console.log(this.musicasUsuario)
       this.isLoading = false
     }
   }
