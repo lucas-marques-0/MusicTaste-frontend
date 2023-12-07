@@ -11,8 +11,8 @@ export class CadastroService {
 
   async adicionarUsuario(usuario: any, email: any, senha: any): Promise<any> {
     const avatarUsuario = this.avatarUrl + usuario;
-   // const listaMusicas = { 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' }
-    let listaMusicas = [
+    const listaMusicas = { 0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' }
+    /*let listaMusicas = [
       { key: '0', value: '' },
       { key: '1', value: '' },
       { key: '2', value: '' },
@@ -23,7 +23,7 @@ export class CadastroService {
       { key: '7', value: '' },
       { key: '8', value: '' },
       { key: '9', value: '' },
-    ]
+    ]*/
     try {
       await this.http.post('https://musictaste-backend.onrender.com/usuarios', { username: usuario, email: email, password: senha, avatar: avatarUsuario, musicas: listaMusicas, action: 'cadastro' }).toPromise();
     } catch (error) {
