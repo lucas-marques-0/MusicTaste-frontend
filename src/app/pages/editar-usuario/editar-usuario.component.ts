@@ -36,8 +36,8 @@ export class EditarUsuarioComponent {
   linkInvalido: boolean[] = new Array(10).fill(false);
   linkEncurtado: boolean[] = new Array(10).fill(false);
   urlMusicaEmbed: { [key: string]: SafeResourceUrl } = {};
-  usuarios: any = []
-  isLoading: boolean = true
+  usuarios: any = [];
+  isLoading: boolean = true;
   
   async ngOnInit() {
     this.userID = this.route.snapshot.paramMap.get('id')

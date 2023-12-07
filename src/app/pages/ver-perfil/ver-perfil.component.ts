@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class VerPerfilComponent {
   constructor(private route: ActivatedRoute, private router: Router, private verPerfilService: VerPerfilService, private sanitizer: DomSanitizer) { }
 
+  isLoading: boolean = true;
   usuarioInfos: any = [];
   musicasUsuario: any = [];
   textosMusicas: any = [
@@ -26,15 +27,14 @@ export class VerPerfilComponent {
     'Música que transmite mais sentimentos.',
     'Música preferida pro alto falante.'
   ];
-  isLoading: boolean = true;
 
   async ngOnInit() {
     const userID = this.route.snapshot.paramMap.get('id')
-    const userInfos = await this.verPerfilService.buscarInfosUsuario(userID)
-    if (!userInfos) {
+    const userInfosObj = await this.verPerfilService.buscarInfosUsuario(userID)
+    if (!userInfosObj) {
       await this.router.navigate(['/'])
     } else {
-      this.usuarioInfos = userInfos.userInfos[0]     
+      this.usuarioInfos = userInfosObj.userInfos[0]     
       this.musicasUsuario = this.usuarioInfos.musicas
       this.isLoading = false
     }
@@ -47,5 +47,4 @@ export class VerPerfilComponent {
       return this.sanitizer.bypassSecurityTrustResourceUrl(musicaUrl.replace('/track/', '/embed/track/'))
     }
   }
-
 }
