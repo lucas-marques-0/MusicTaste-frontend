@@ -16,8 +16,8 @@ export class VerPerfilService {
     };
 
     try {
-      const infosUsuario: any = await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`, tokenObj).toPromise();
-      return infosUsuario;
+      return await this.http.post(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: token }).toPromise();
+      // return await this.http.post('https://musictaste-backend.onrender.com/usuarios', { userID: userID, password: password, action: 'login' }).toPromise();
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
     }
