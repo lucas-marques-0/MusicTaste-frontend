@@ -10,8 +10,7 @@ export class LoginService {
 
   async buscarUsuarios(): Promise<any> {
     try {
-      const usuariosCadastrados = await this.http.get('https://musictaste-backend.onrender.com/usuarios').toPromise();
-      return usuariosCadastrados;
+      return await this.http.get('https://musictaste-backend.onrender.com/usuarios').toPromise();
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
     }
