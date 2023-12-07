@@ -13,7 +13,7 @@ export class VerPerfilService {
     const token = localStorage.getItem('token');
 
     try {
-      return await this.http.post(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: 123 }).toPromise();
+      return await this.http.post(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: '123' }).toPromise();
       // return await this.http.post('https://musictaste-backend.onrender.com/usuarios', { userID: userID, password: password, action: 'login' }).toPromise();
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
