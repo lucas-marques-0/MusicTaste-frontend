@@ -30,12 +30,12 @@ export class VerPerfilComponent {
   isLoading: boolean = true
 
   async ngOnInit() {
-    try {
-      this.userID = this.route.snapshot.paramMap.get('id')
-      await this.buscarInfosUsuario(this.userID)
+    this.userID = this.route.snapshot.paramMap.get('id')
+    const infosValidas: any = await this.buscarInfosUsuario(this.userID)
+    if (infosValidas) {
       this.isLoading = false
-    } catch {
-      await this.router.navigate(['/']) 
+    } else {
+      await this.router.navigate(['/'])
     }
   }
 
