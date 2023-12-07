@@ -30,15 +30,13 @@ export class VerPerfilComponent {
   isLoading: boolean = true
 
   async ngOnInit() {
-    const token: any = localStorage.getItem('token')
-    //const tokenValido = await this.verPerfilService.buscarDadosVerPerfil(token);
+    const token = localStorage.getItem('token')
     if(token) {
       this.userID = this.route.snapshot.paramMap.get('id')
-      await this.buscarInfosUsuario(this.userID);
+      await this.buscarInfosUsuario(this.userID)
       this.isLoading = false
     } else {
       await this.router.navigate(['/']);
-      console.log('usuario não habilitado')
     }
   }
 

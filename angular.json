@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["crypto", "crypto-js", "jsonwebtoken"],
             "outputPath": "dist/musictaste",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -35,12 +34,12 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "700kb",
+                  "maximumWarning": "500kb",
                   "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "3kb",
+                  "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
               ],
