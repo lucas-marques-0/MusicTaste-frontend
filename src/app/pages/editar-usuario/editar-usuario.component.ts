@@ -40,8 +40,8 @@ export class EditarUsuarioComponent {
   isLoading: boolean = true;
   
   async ngOnInit() {
-    const userID = this.route.snapshot.paramMap.get('id')
-    const userInfosObj = await this.editarUsuarioService.buscarInfosUsuario(userID)
+    this.userID = this.route.snapshot.paramMap.get('id')
+    const userInfosObj = await this.editarUsuarioService.buscarInfosUsuario(this.userID)
     if (!userInfosObj) {
       await this.router.navigate(['/'])
     } else {
