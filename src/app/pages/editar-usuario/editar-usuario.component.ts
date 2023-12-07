@@ -51,22 +51,6 @@ export class EditarUsuarioComponent {
     }
   }
 
-  fazerObjectKeys(lista: any): any {
-    return Object.keys(lista)
-  }
-
-  /*async ngOnInit() {
-    this.userID = this.route.snapshot.paramMap.get('id')
-    await this.buscarInfosUsuario(this.userID)
-    this.isLoading = false
-  }
-
-  async buscarInfosUsuario(userID: any) {
-    let userInfos = await this.editarUsuarioService.buscarInfosUsuario(userID);    
-    this.usuarioInfos = userInfos[0]     
-    this.musicasUsuario = this.usuarioInfos.musicas
-  }*/
-
   colocarMusica(chave: string, acao: number) {
     const musica = this.musicasUsuario.find((musica: any) => musica.key === chave);
     if(acao == 1) {

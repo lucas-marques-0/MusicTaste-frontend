@@ -36,13 +36,8 @@ export class VerPerfilComponent {
     } else {
       this.usuarioInfos = userInfosObj.userInfos[0]     
       this.musicasUsuario = this.usuarioInfos.musicas
-      console.log(this.musicasUsuario)
       this.isLoading = false
     }
-  }
-
-  fazerObjectKeys(lista: any) {
-    return Object.keys(lista)
   }
 
   mostrarMusica(musicaUrl: any) {

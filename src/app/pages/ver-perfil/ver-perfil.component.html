@@ -8,13 +8,13 @@
             <p>explore o gosto musical de {{usuarioInfos.username | titlecase}}, e veja o que ele anda escutando!</p>
         </div>
         <div class="grid-musicas">
-            <div *ngFor="let key of fazerObjectKeys(musicasUsuario)" class="card">
-                <h2>{{ textosMusicas[key] }}</h2>
-                <div *ngIf="!musicasUsuario[key]">
+            <div *ngFor="let musica of musicasUsuario" class="card">
+                <h2>{{ textosMusicas[musica.key] }}</h2>
+                <div *ngIf="!musica.value">
                     <p class="textoSemMusica">Infelizmente esse usuário ainda não respondeu a essa pergunta :/</p>
                 </div>
-                <div *ngIf="musicasUsuario[key]">
-                    <iframe style="border-radius:12px" [src]="mostrarMusica(musicasUsuario[key])" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <div *ngIf="musica.value">
+                    <iframe style="border-radius:12px" [src]="mostrarMusica(musica.value)" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
