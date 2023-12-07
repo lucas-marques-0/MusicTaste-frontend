@@ -11,8 +11,7 @@ export class EditarUsuarioService {
 
   async buscarInfosUsuario(userID: any): Promise<any> {
     try {
-      const infosUsuario = await this.http.get('https://musictaste-backend.onrender.com/usuarios/'+userID).toPromise();
-      return infosUsuario;
+      return await this.http.get(`https://musictaste-backend.onrender.com/usuarios/${userID}`).toPromise();
     } catch (error) {
       console.error('Erro ao buscar informações do usuário:', error);
     }
@@ -20,7 +19,7 @@ export class EditarUsuarioService {
 
   async atualizarMusicasUsuario(userID: any, musicasUsuario: any): Promise<any> {
     try {
-      await this.http.put('https://musictaste-backend.onrender.com/usuarios/'+userID, { userID, musicasUsuario }).toPromise();
+      await this.http.put(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { userID, musicasUsuario }).toPromise();
     } catch (error) {
       console.error('Erro ao atualizar musicas do usuário:', error);
     }

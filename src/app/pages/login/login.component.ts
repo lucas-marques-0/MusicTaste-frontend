@@ -28,6 +28,7 @@ export class LoginComponent {
         const login = await this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
         if(login.token) {
           localStorage.setItem('token', login.token);
+          localStorage.setItem('userID', usuarioEncontrado.id);
           this.resetarValores();
           this.router.navigate(['/home']);
         }

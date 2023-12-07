@@ -40,6 +40,18 @@ export class EditarUsuarioComponent {
   isLoading: boolean = true;
   
   async ngOnInit() {
+    const userID = this.route.snapshot.paramMap.get('id')
+    const userInfosObj = await this.editarUsuarioService.buscarInfosUsuario(userID)
+    if (!userInfosObj) {
+      await this.router.navigate(['/'])
+    } else {
+      this.usuarioInfos = userInfosObj.userInfos[0]     
+      this.musicasUsuario = this.usuarioInfos.musicas
+      this.isLoading = false
+    }
+  }
+
+  /*async ngOnInit() {
     this.userID = this.route.snapshot.paramMap.get('id')
     await this.buscarInfosUsuario(this.userID)
     this.isLoading = false
@@ -49,7 +61,7 @@ export class EditarUsuarioComponent {
     let userInfos = await this.editarUsuarioService.buscarInfosUsuario(userID);    
     this.usuarioInfos = userInfos[0]     
     this.musicasUsuario = this.usuarioInfos.musicas
-  }
+  }*/
 
   colocarMusica(chave: string, acao: number) {
     const musica = this.musicasUsuario.find((musica: any) => musica.key === chave);
