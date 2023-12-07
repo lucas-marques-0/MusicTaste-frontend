@@ -11,9 +11,6 @@ export class VerPerfilService {
 
   async buscarInfosUsuario(userID: any): Promise<any> {
     const token = localStorage.getItem('token');
-    const tokenObj: any = {
-      "token": token,
-    };
 
     try {
       return await this.http.post(`https://musictaste-backend.onrender.com/usuarios/${userID}`, { token: token }).toPromise();
