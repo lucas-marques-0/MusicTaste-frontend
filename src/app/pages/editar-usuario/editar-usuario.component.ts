@@ -51,6 +51,10 @@ export class EditarUsuarioComponent {
     }
   }
 
+  fazerObjectKeys(lista: any): any {
+    return Object.keys(lista)
+  }
+
   /*async ngOnInit() {
     this.userID = this.route.snapshot.paramMap.get('id')
     await this.buscarInfosUsuario(this.userID)
