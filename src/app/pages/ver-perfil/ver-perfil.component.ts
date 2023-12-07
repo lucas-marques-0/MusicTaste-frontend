@@ -31,8 +31,8 @@ export class VerPerfilComponent {
 
   async ngOnInit() {
     const token: any = localStorage.getItem('token')
-    const tokenValido = await this.verPerfilService.buscarDadosVerPerfil(token);
-    if(tokenValido) {
+    //const tokenValido = await this.verPerfilService.buscarDadosVerPerfil(token);
+    if(token) {
       this.userID = this.route.snapshot.paramMap.get('id')
       await this.buscarInfosUsuario(this.userID);
       this.isLoading = false
@@ -43,7 +43,7 @@ export class VerPerfilComponent {
   }
 
   async buscarInfosUsuario(userID: any) {
-    let userInfos = await this.verPerfilService.buscarDadosVerPerfil(userID);    
+    let userInfos = await this.verPerfilService.buscarInfosUsuario(userID);    
     this.usuarioInfos = userInfos[0]     
     this.musicasUsuario = this.usuarioInfos.musicas
   }
