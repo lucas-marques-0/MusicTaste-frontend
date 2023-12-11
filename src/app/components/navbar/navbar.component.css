@@ -40,6 +40,10 @@ nav ul div {
     justify-content: center;
 }
 
+.btn-logout {
+    background-color: #ffaa00;
+}
+
 .btn-editar {
     background-color: #e63946;
 }

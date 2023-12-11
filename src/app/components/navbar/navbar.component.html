@@ -4,6 +4,7 @@
     <ul>
         <li class="logo" (click)="telaHome()"><h1>Music<span>Taste</span></h1></li>
         <div>
+            <li class="btn-perfil btn-logout" (click)="logout()">Log Out</li>
             <li class="btn-perfil btn-editar" (click)="telaEditarPerfil()">Editar perfil</li> 
             <li *ngIf="layout === '1'">
                 <form (ngSubmit)="pesquisarUsuario()">

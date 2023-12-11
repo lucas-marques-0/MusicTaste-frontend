@@ -27,6 +27,11 @@ export class NavbarComponent {
     this.router.navigate(['/editarUsuario/', userID]);
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
   async telaHome() {
     await this.router.navigate(['/home']);
     location.reload()
