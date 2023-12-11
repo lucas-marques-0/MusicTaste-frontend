@@ -35,18 +35,19 @@ export class CadastroComponent {
         const emailExistente = usuariosCadastrados.find((user: any) => this.email === user.email);
         if(usernameExistente) {
           this.exibirSwal('Erro!', 'error', 'O nome do usuário digitado já está em uso. Por favor, escolha um diferente :/');
-        } 
-        if(emailExistente) {
-          this.exibirSwal('Erro!', 'error', 'O email já está cadastrado, clique em "logar" para continuar.');
         } else {
-          const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
-          const usuarioAdicionado = await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada);
-          if (usuarioAdicionado) {
-            this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
-            this.resetarValores();
-            this.router.navigate(['/']);
+          if(emailExistente) {
+            this.exibirSwal('Erro!', 'error', 'O email já está cadastrado, clique em "logar" para continuar.');
           } else {
-            this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
+            const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
+            const usuarioAdicionado = await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada);
+            if (usuarioAdicionado) {
+              this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
+              this.resetarValores();
+              this.router.navigate(['/']);
+            } else {
+              this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
+            }
           }
         }
       }
