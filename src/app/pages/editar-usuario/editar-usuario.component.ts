@@ -45,8 +45,8 @@ export class EditarUsuarioComponent {
     if (!userInfosObj) {
       await this.router.navigate(['/'])
     } else {
-      this.usuarioInfos = userInfosObj.userInfos[0]     
-      this.musicasUsuario = this.usuarioInfos.musicas
+      this.usuarioInfos = userInfosObj    
+      this.musicasUsuario = userInfosObj.musicas
       this.isLoading = false
     }
   }
