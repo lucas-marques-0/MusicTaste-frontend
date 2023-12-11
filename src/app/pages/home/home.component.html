@@ -1,5 +1,5 @@
+<app-navbar (searchEvent)="filtrarUsuarios($event)" layout="1"></app-navbar>
 <div class="home-container">
-    <app-navbar (searchEvent)="filtrarUsuarios($event)" layout="1"></app-navbar>
     <div *ngIf="isLoading" class="loading"><p>Carregando...</p></div>
     <div *ngIf="!isLoading" class="page-content">
         <h1>Explorar usuários</h1>
@@ -16,5 +16,5 @@
             <button (click)="resetarListaUsuarios()">OK!</button>
         </div>
     </div>
-    <app-footer></app-footer>
 </div>
+<app-footer></app-footer>

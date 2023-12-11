@@ -2,10 +2,12 @@
 nav {
     background-color: #efdac1;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding: 10px 30px;
+    z-index: 1000;
+    border-bottom: solid #E63946 1.5px;
 }
 
 nav ul {
@@ -41,7 +43,7 @@ nav ul div {
 }
 
 .btn-logout {
-    background-color: #ffaa00;
+    background-color: #E87E48;
 }
 
 .btn-editar {
@@ -71,13 +73,13 @@ nav input {
     margin-left: 10px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 830px) {
     .logo {
         font-size: 1.5em;
     }
 
-    .btn-editar, .btn-home {
-        font-size: 0.7em;
+    .btn-editar, .btn-home, .btn-logout {
+        font-size: 0.9em;
     }
 
     nav input {
@@ -89,7 +91,7 @@ nav input {
     }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 650px) {
     nav {
         padding: 10px 10px;
     }
@@ -99,7 +101,7 @@ nav input {
     }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 570px) {
     nav ul {
         flex-direction: column;
         gap: 5px;
@@ -110,7 +112,7 @@ nav input {
         justify-content: center;
     }
 
-    .btn-editar, .btn-home {
+    .btn-editar, .btn-home, .btn-logout {
         font-size: 0.9em;
     }
 
@@ -124,7 +126,7 @@ nav input {
     }
 }
 
-@media (max-width: 270px) {
+@media (max-width: 350px) {
     .logo {
         font-size: 1em;
         margin-bottom: 5px;
@@ -132,9 +134,19 @@ nav input {
 
     nav ul div {
         flex-direction: column;
+        width: 80%;
     }
 
-    .btn-editar, .btn-home{
+    nav ul div li form {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav ul div li form input {
+        width: 70%;
+    }
+
+    .btn-editar, .btn-home, .btn-logout {
         font-size: 0.8em;
     }
 

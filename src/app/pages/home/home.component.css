@@ -1,28 +1,29 @@
 .home-container {
     background-color: #f5eee6;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-bottom: 100px;
+    
 }
 
 .loading {
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 80px);
     color: #000000;
-    margin-top: 100px;
     font-size: 1.5em;
 }
 
+.loading p {
+    padding-top: 20px;
+}
+
 .page-content {
-    margin-top: 100px;
+    margin-top: 80px;
+    padding-bottom: 50px;
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 30px;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 80px);
 }
 
 .logo {
@@ -95,6 +96,8 @@ nav input {
 }
 
 .page-content h1 {
+    position: relative;
+    top: 0px;
     background: linear-gradient(190deg, #e63946, #e7a049);
     padding: 7px;
     color: #ffffff;
@@ -131,21 +134,35 @@ nav input {
     font-size: 1.3em;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 830px) {
+    .page-content h1 {
+        top: -15px;
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 570px) {
+    .page-content h1 {
+        top: 23px;
+        margin-bottom: 50px;
+    }
+}
+
+/*@media (max-width: 470px) {
     .page-content, .loading {
         margin-top: 138px
     }
-}
+}*/
 
 @media (max-width: 350px) {
-    .page-content h1 {
-        font-size: 1.5em;
-    }
-}
-
-@media (max-width: 270px) {
     .page-content, .loading {
         margin-top: 168px
+    }
+
+    .page-content h1 {
+        top: 5px;
+        font-size: 1.5em;
+        margin-bottom: 0px;
     }
 
     .grid-usuarios {
