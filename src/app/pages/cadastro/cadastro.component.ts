@@ -29,11 +29,13 @@ export class CadastroComponent {
         this.username = '';
         this.avisarNomeUsuarioComEspacos();
       } else {
-        const usernameEncontrado = await this.cadastroService.verificarUsernameExistente(this.username);
-        const emailEncontrado = await this.cadastroService.verificarEmailExistente(this.email);
-        if(usernameEncontrado) {
+        const usuariosCadastrados = await this.cadastroService.buscarUsuarios();
+        const usernameExistente = usuariosCadastrados.find((user: any) => this.username === user.username);
+        const emailExistente = usuariosCadastrados.find((user: any) => this.email === user.email);
+        if(usernameExistente) {
           this.avisarNomeUsuarioJaExiste();
-        } if(emailEncontrado) {
+        } 
+        if(emailExistente) {
           this.avisarEmailUsuarioJaExiste();
         } else {
           const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
