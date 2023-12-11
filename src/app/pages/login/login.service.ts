@@ -21,6 +21,7 @@ export class LoginService {
       return await this.http.post('https://musictaste-backend.onrender.com/usuarios', { userID: userID, password: password, action: 'login' }).toPromise();
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error); 
+      return false
     }
   }
 

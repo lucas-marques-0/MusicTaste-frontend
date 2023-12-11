@@ -54,6 +54,11 @@
     width: 100%;
 }
 
+.form-group label {
+    font-size: 0.8em;
+    margin-bottom: 3px;
+}
+
 .form-group input {
     padding: 5px;
     border-radius: 5px;

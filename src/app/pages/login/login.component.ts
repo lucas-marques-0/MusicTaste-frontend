@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import * as CryptoJS from 'crypto-js';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -20,22 +22,32 @@ export class LoginComponent {
 
   async onSubmit() {
     if (!this.email || !this.password) {
+      this.exibirSwal('Erro!', 'error', 'Porfavor, preencha todos os campos :/');
       this.resetarValores();
-      this.avisarCamposInvalidos();
     } else {
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
         const login = await this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
-        if(login.token) {
+        if(!login) {
+          this.exibirSwal('Erro!', 'error', 'Senha incorreta :/');
+        } else {
           localStorage.setItem('token', login.token);
           localStorage.setItem('userID', usuarioEncontrado.id);
           this.resetarValores();
           this.router.navigate(['/home']);
-        }
+        } 
       } else {
-        this.avisarEmailIncorreto();
+        this.exibirSwal('Erro!', 'error', 'Não achamos nenhum usuário com esse email. Caso não tenha cadastro clique em "cadastro" abaixo.');
       }
     }
+  }
+
+  exibirSwal(titulo: string, icon: SweetAlertIcon | 'none' = 'success', texto: string): void {
+    Swal.fire({
+      title: titulo,
+      icon: icon === 'none' ? undefined : icon,
+      text: texto,
+    });
   }
  
   verificarLoginUsuario(usuarios: any[], username: string, password: string) {
@@ -46,27 +58,6 @@ export class LoginComponent {
     } else {
       return false
     }
-  }
-
-  avisarEmailIncorreto() {
-    this.emailIncorreto = true;
-    setTimeout(() => {
-      this.emailIncorreto = false;
-    }, 3000);
-  }
-
-  avisarSenhaIncorreta() {
-    this.senhaIncorreta = true;
-    setTimeout(() => {
-      this.senhaIncorreta = false;
-    }, 3000);
-  }
-
-  avisarCamposInvalidos() {
-    this.camposInvalidos = true;
-    setTimeout(() => {
-      this.camposInvalidos = false;
-    }, 3000);
   }
 
   resetarValores() {
