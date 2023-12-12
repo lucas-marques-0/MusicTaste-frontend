@@ -89,23 +89,54 @@
     border: none;
 }
 
-.btn-card {
-    background-color: #e63946;
-    padding: 10px 50px;
-    border-radius: 5px;
+.btn-com-musica {
+    width: 55% !important;
+    display: flex;
+    flex-direction: row !important;
+    gap: 0px !important;
+}
+
+.btn {
+    width: 50%;
+    padding: 10px;
     cursor: pointer;
     color: #ffffff;
     transition: background-color 0.5s;
     border: none;
     font-size: 1.1em;
-    width: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btn-card:hover{
+.btn-adicionar {
+    width: 55% !important;
+    background-color: #e63946; 
+    border-radius: 5px;
+}
+
+.btn-adicionar:hover {
     background-color: #e63947b6;
+}
+
+.btn-atualizar {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #e63946; 
+}
+
+.btn-atualizar:hover{
+    background-color: #e63947b6;
+}
+
+.btn-excluir {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #e67039;
+}
+
+.btn-excluir:hover {
+    background-color: #e67039aa;
 }
 
 .card h2 {
@@ -177,9 +208,9 @@
     .card input {
         width: 80%;
     }
-    
-    .btn-card {
-        width: 80%;
+
+    .btn-com-musica {
+        width: 80% !important;
     }
 }
 
@@ -222,9 +253,9 @@
     .card input {
         width: 90%;
     }
-    
-    .btn-card {
-        width: 90%;
+
+    .btn-com-musica {
+        width: 90% !important;
     }
 
     .card iframe {
@@ -242,6 +273,14 @@
     .infosUsuario img {
         width: 100%;
     }
+
+    .btn {
+        width: 55%;
+    }
+
+    .btn{
+        font-size: 0.8em;
+    }
 }
 
 @media (max-width: 270px) {
@@ -256,9 +295,15 @@
     .card input {
         width: 100%;
     }
-    
-    .btn-card {
-        width: 100%;
+
+    .btn-com-musica {
+        width: 100% !important;
+    }
+
+    .btn {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; 
     }
 
     .card iframe {

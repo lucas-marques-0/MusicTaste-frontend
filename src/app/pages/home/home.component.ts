@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { HomeService } from './home.service';
+import { HomeService } from '../login/home.service';
 import { OnInit } from '@angular/core';
 
 
@@ -29,17 +29,13 @@ export class HomeComponent {
 
   filtrarUsuarios(query: string) {
     if (query) {
-      if (this.usuarioNaoEncontrado = true) {
-        this.usuarioNaoEncontrado = false
-      }
       this.usuariosFiltrados = this.usuarios.filter(user =>
         user.username.toLowerCase().includes(query.toLowerCase())
       );
-      if(this.usuariosFiltrados.length == 0) {
-        this.usuarioNaoEncontrado = true
-      }
+      this.usuarioNaoEncontrado = this.usuariosFiltrados.length === 0;
     } else {
       this.usuariosFiltrados = [];
+      this.usuarioNaoEncontrado = false;
     }
   }
 

@@ -51,6 +51,13 @@ export class EditarUsuarioComponent {
     }
   }
 
+  async excluirMusica(chave: any) {
+    const musica = this.musicasUsuario.find((musica: any) => musica.key === chave);
+    musica.value = '';
+    await this.atualizarMusicas(this.userID, this.musicasUsuario);
+    window.location.reload();
+  }
+
   colocarMusica(chave: string, acao: number) {
     const musica = this.musicasUsuario.find((musica: any) => musica.key === chave);
     if(acao == 1) {
