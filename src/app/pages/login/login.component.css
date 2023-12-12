@@ -68,18 +68,19 @@
 .login-form button {
     width: 100%;
     cursor: pointer;
-    background-color: #e639476e;
+    background-color: #e63946;
     color: #ffffff;
     padding: 5px;
     border-radius: 5px;
     border: none;
-    transition: background-color 0.5s;
+    transition: background-color 0.7s;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.login-form button:hover {
-    background-color: #e63946;
+.login-form button:disabled {
+    background-color: #e639476e;
+    cursor: not-allowed;
 }
 
 .login-form span {
