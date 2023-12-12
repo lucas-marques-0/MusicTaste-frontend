@@ -40,14 +40,13 @@ export class CadastroComponent {
             this.exibirSwal('Erro!', 'error', 'O email já está cadastrado, clique em "logar" para continuar.');
           } else {
             const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
-            const usuarioAdicionado = await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada);
-            if (!usuarioAdicionado) {
-              this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
-            } else {
-              await this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
+            this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada).then((usuarioAdicionado) => {
+              this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
               this.resetarValores();
               this.router.navigate(['/']);
-            }
+            }).catch((erro) => {
+              this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
+            })
           }
         }
       }
