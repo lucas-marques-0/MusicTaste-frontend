@@ -49,16 +49,6 @@ export class LoginComponent {
       text: texto,
     });
   }
- 
-  verificarLoginUsuario(usuarios: any[], username: string, password: string) {
-    const usuarioEncontrado = usuarios.find((usuario) => usuario.username === username && usuario.password === password);
-    if(usuarioEncontrado) {
-      localStorage.setItem('userID', usuarioEncontrado.id);
-      return true
-    } else {
-      return false
-    }
-  }
 
   resetarValores() {
     this.email = '';

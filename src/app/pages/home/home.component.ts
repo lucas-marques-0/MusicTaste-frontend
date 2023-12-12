@@ -19,8 +19,12 @@ export class HomeComponent {
   isLoading: boolean = true
 
   async ngOnInit() {
-    await this.buscarUsuarios()
-    this.isLoading = false
+    if(localStorage.getItem('token') && localStorage.getItem('userID')) {
+      await this.buscarUsuarios()
+      this.isLoading = false
+    } else {
+      await this.router.navigate(['/'])
+    }
   }
 
   filtrarUsuarios(query: string) {
