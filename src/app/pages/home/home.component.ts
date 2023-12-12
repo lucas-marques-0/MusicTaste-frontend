@@ -28,7 +28,8 @@ export class HomeComponent {
   }
 
   filtrarUsuarios(query: string) {
-    if (query) {
+    console.log(query)
+    if (query !== '') {
       this.usuariosFiltrados = this.usuarios.filter(user =>
         user.username.toLowerCase().includes(query.toLowerCase())
       );
@@ -39,13 +40,14 @@ export class HomeComponent {
     }
   }
 
+  resetarFiltro() {
+    this.usuariosFiltrados = this.usuarios;
+    this.usuarioNaoEncontrado = false;
+  }
+
   async buscarUsuarios() {
     const listaUsuarios = await this.homeService.buscarUsuarios();
     this.usuarios = listaUsuarios.filter((usuario: any) => usuario.id !== localStorage.getItem('userID'));
-  }
-
-  async resetarListaUsuarios() {
-    this.usuarioNaoEncontrado = false
   }
 
   verPerfil(usuario: any) {

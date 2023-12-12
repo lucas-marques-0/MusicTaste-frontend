@@ -11,15 +11,18 @@ export class NavbarComponent {
   constructor(private router: Router) { }
 
   @Output() searchEvent = new EventEmitter<string>();
+  @Output() buttonClickEvent = new EventEmitter<void>();
   @Input() layout: string = '1';
 
   usuarioPesquisado: string = '';
 
   pesquisarUsuario() {
-    if (this.usuarioPesquisado.trim() !== '') {
-      this.searchEvent.emit(this.usuarioPesquisado);
-    }
-    this.usuarioPesquisado = ''
+    this.searchEvent.emit(this.usuarioPesquisado);
+  }
+
+  buttonClick() {
+    this.usuarioPesquisado = '';
+    this.buttonClickEvent.emit();
   }
 
   telaEditarPerfil() {

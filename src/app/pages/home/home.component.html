@@ -1,4 +1,4 @@
-<app-navbar (searchEvent)="filtrarUsuarios($event)" layout="1"></app-navbar>
+<app-navbar (searchEvent)="filtrarUsuarios($event)" (buttonClickEvent)="resetarFiltro()" layout="1"></app-navbar>
 <div class="home-container">
     <div *ngIf="isLoading" class="loading"><p>Carregando...</p></div>
     <div *ngIf="!isLoading" class="page-content">
@@ -11,9 +11,8 @@
             </div>
         </div>
         <div *ngIf="usuarioNaoEncontrado" class="usuario-nao-encontrado">
-            <h2>Usuario não encontrado :/</h2>
-            <p>Tente novamente ou liste todos novamente</p>
-            <button (click)="resetarListaUsuarios()">OK!</button>
+            <h2>Usuário não encontrado :/</h2>
+            <p>Pesquise algo diferente ou clique no botão ao lado do campo de pesquisa pra voltar.</p>
         </div>
     </div>
 </div>
