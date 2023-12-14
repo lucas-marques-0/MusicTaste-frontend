@@ -38,6 +38,7 @@ export class EditarUsuarioComponent {
   urlMusicaEmbed: { [key: string]: SafeResourceUrl } = {};
   usuarios: any = [];
   isLoading: boolean = true;
+  isLoadingDelete: boolean = false;
   
   async ngOnInit() {
     this.userID = this.route.snapshot.paramMap.get('id')
@@ -52,10 +53,12 @@ export class EditarUsuarioComponent {
   }
 
   async excluirMusica(chave: any) {
+    this.isLoadingDelete = true;
     const musica = this.musicasUsuario.find((musica: any) => musica.key === chave);
     musica.value = '';
     await this.atualizarMusicas(this.userID, this.musicasUsuario);
-    window.location.reload();
+    await window.location.reload();
+    this.isLoadingDelete = false;
   }
 
   colocarMusica(chave: string, acao: number) {

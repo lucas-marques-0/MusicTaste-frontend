@@ -26,23 +26,27 @@ export class CadastroComponent {
       this.exibirSwal('Erro!', 'error', 'Espaços não são permitidos no nome do usuário :/');
       this.username = '';
     } else {
-      const usuariosCadastrados = await this.cadastroService.buscarUsuarios();
-      const usernameExistente = usuariosCadastrados.find((user: any) => this.username === user.username);
-      const emailExistente = usuariosCadastrados.find((user: any) => this.email === user.email);
-      if(usernameExistente) {
-        this.exibirSwal('Erro!', 'error', 'O nome do usuário digitado já está em uso. Por favor, escolha um diferente :/');
+      if (!this.validarEmail(this.email)) {
+        this.exibirSwal('Erro!', 'error', 'O formato do email digitado não é válido, porfavor verifique :/');
       } else {
-        if(emailExistente) {
-          this.exibirSwal('Erro!', 'error', 'O email já está cadastrado, clique em "logar" para continuar.');
+        const usuariosCadastrados = await this.cadastroService.buscarUsuarios();
+        const usernameExistente = usuariosCadastrados.find((user: any) => this.username === user.username);
+        const emailExistente = usuariosCadastrados.find((user: any) => this.email === user.email);
+        if (usernameExistente) {
+          this.exibirSwal('Erro!', 'error', 'O nome do usuário digitado já está em uso. Por favor, escolha um diferente :/');
         } else {
-          const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
-          await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada).then((usuarioAdicionado) => {
-            this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
-            this.resetarValores();
-            this.telaLogin();
-          }).catch((erro) => {
-            this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
-          })
+          if (emailExistente) {
+            this.exibirSwal('Erro!', 'error', 'O email já está cadastrado, clique em "logar" para continuar.');
+          } else {
+            const senhaCriptografada = crypto.SHA256(this.password).toString(crypto.enc.Hex)
+            await this.cadastroService.adicionarUsuario(this.username, this.email.trim(), senhaCriptografada).then((usuarioAdicionado) => {
+              this.exibirSwal('Cadastro concluído!', 'success', 'Seu cadastro foi realizado com sucesso.');
+              this.resetarValores();
+              this.telaLogin();
+            }).catch((erro) => {
+              this.exibirSwal('Erro!', 'error', 'Infelizmente ocorreu um erro ao cadastrar o usuário :/');
+            })
+          }
         }
       }
     }
@@ -54,6 +58,11 @@ export class CadastroComponent {
       icon: icon === 'none' ? undefined : icon,
       text: texto,
     });
+  }
+
+  validarEmail(email: any) {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return regex.test(email);
   }
 
   isButtonDisabled(): boolean {
