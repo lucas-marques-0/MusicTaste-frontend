@@ -14,7 +14,7 @@ footer {
 
 footer p span a {
     color: #81c4ff;
-    text-decoration: none;
+    text-decoration: underline;
     box-shadow: 1px solid black;
 }
 
