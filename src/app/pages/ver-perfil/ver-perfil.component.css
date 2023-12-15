@@ -122,6 +122,16 @@
     margin: 20px;
 }
 
+.carregando-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 1.2em;
+    margin-bottom: 100px;
+    z-index: 100;
+}
+
 @media (max-width: 1000px) {
     .card {
         width: 80%;
