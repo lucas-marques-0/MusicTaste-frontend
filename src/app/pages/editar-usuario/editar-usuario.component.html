@@ -18,24 +18,12 @@
                 <div *ngIf="!musica.value">
                     <p>Responda a pergunda acima adicionando o link da musica no Spotify.</p>
                     <input type="text" placeholder="link aqui" [(ngModel)]="linksMusicas[musica.key]">
-                    <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
-                    <span *ngIf="linkEncurtado[musica.key]" class="linkEncurtado">
-                        <span>O link digitado está encurtado.</span>
-                        <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'.</p>
-                        <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
-                    </span>
                     <button class="btn btn-adicionar" (click)="colocarMusica(musica.key, 1)">Decidido!</button>
                 </div>
                 <div *ngIf="musica.value">
                     <span class="carregando-txt">Carregando...</span>
                     <iframe style="border-radius:12px; z-index: 100;" [id]="'iframe-'+musica.key" [src]="mostrarMusica(musica.key, musica.value)" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                    <input type="text" placeholder="link da musica atualizada aqui" [(ngModel)]="linksMusicasAtualizadas[musica.key]">
-                    <span *ngIf="linkInvalido[musica.key]" class="linkInvalido">O link digitado não é válido.</span>
-                    <span *ngIf="linkEncurtado[musica.key]" class="linkEncurtado">
-                        <span>O link digitado está encurtado.</span>
-                        <p>No app do spotify, tente clicar em <img src="../../../assets/mais-icone.png"> e depois 'Copiar'.</p>
-                        <button (click)="removerLinkEncurtado(musica.key)">Ok!</button>
-                    </span>
+                    <input type="text" placeholder="link da musica atualizada aqui" [(ngModel)]="linksMusicasAtualizadas[musica.key]">         
                     <div class="btn-com-musica">
                         <button class="btn btn-atualizar" (click)="colocarMusica(musica.key, 2)">Atualizar!</button>
                         <button class="btn btn-excluir" (click)="excluirMusica(musica.key)">Excluir</button>

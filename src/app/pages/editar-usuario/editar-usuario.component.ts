@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { EditarUsuarioService } from './editar-usuario.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -33,8 +34,6 @@ export class EditarUsuarioComponent {
   naoTemMusica: boolean = true;
   linksMusicas: any = new Array(10).fill('');
   linksMusicasAtualizadas: any = new Array(10).fill('');
-  linkInvalido: boolean[] = new Array(10).fill(false);
-  linkEncurtado: boolean[] = new Array(10).fill(false);
   urlMusicaEmbed: { [key: string]: SafeResourceUrl } = {};
   usuarios: any = [];
   isLoading: boolean = true;
@@ -71,10 +70,10 @@ export class EditarUsuarioComponent {
         this.linksMusicas[musica.key] = ''
       } else {
         if(value.includes('spotify.link')) {
-          this.avisarLinkEncurtado(chave)
+          this.exibirSwal('Erro!', 'error', 'O link digitado está encurtado! No app do spotify, tente clicar em "..."  e depois "Copiar".');
           this.linksMusicas[musica.key] = ''
         } else {
-          this.avisarLinkInvalido(chave)
+          this.exibirSwal('Erro!', 'error', 'O link digitado não é válido :/');
           this.linksMusicas[musica.key] = ''
         }
       }
@@ -93,14 +92,22 @@ export class EditarUsuarioComponent {
         this.linksMusicasAtualizadas[musica.key] = ''
       } else {
         if(value.includes('spotify.link')) {
-          this.avisarLinkEncurtado(chave)
+          this.exibirSwal('Erro!', 'error', 'O link digitado está encurtado, No app do spotify, tente clicar em "..."  e depois "Copiar :/');
           this.linksMusicasAtualizadas[musica.key] = ''
         } else {
-          this.avisarLinkInvalido(chave)
+          this.exibirSwal('Erro!', 'error', 'O link digitado não é válido :/');
           this.linksMusicasAtualizadas[musica.key] = ''
         }
       }
     }
+  }
+
+  exibirSwal(titulo: string, icon: SweetAlertIcon | 'none' = 'success', texto: string): void {
+    Swal.fire({
+      title: titulo,
+      icon: icon === 'none' ? undefined : icon,
+      text: texto,
+    });
   }
 
   verificarUrlSpotify(link: string): boolean {
@@ -111,21 +118,6 @@ export class EditarUsuarioComponent {
     } else {
       return false;
     }
-  }
-
-  avisarLinkInvalido(id: any) {
-    this.linkInvalido[id] = true;
-    setTimeout(() => {
-      this.linkInvalido[id] = false;
-    }, 3000);
-  }
-
-  avisarLinkEncurtado(id: any) {
-    this.linkEncurtado[id] = true;
-  }
-
-  removerLinkEncurtado(id: any) {
-    this.linkEncurtado[id] = false;
   }
 
   async atualizarMusicas(userID: any, musicasUsuario: any) {
