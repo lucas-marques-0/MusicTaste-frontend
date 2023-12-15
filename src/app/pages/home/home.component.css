@@ -5,8 +5,8 @@
 
 .loading {
     margin-top: 80px;
-    text-align: center;
     min-height: calc(100vh - 80px);
+    text-align: center;
     color: #000000;
     font-size: 1.5em;
 }
@@ -138,6 +138,11 @@ nav input {
         top: -15px;
         margin-bottom: 0px;
     }
+
+    .loading {
+        margin-top: 65px;
+        min-height: calc(100vh - 65px);
+    }
 }
 
 @media (max-width: 570px) {
@@ -145,13 +150,13 @@ nav input {
         top: 23px;
         margin-bottom: 50px;
     }
+
+    .loading {
+        margin-top: 100px;
+        min-height: calc(100vh - 100px);
+    }
 }
 
-/*@media (max-width: 470px) {
-    .page-content, .loading {
-        margin-top: 138px
-    }
-}*/
 
 @media (max-width: 350px) {
     .page-content, .loading {
@@ -175,6 +180,11 @@ nav input {
 @media (max-width: 230px) {
     .usuario-nao-encontrado h2 {
         font-size: 1.1em;
+    }
+
+    .loading {
+        font-size: 1.2em;
+        padding-top: 30px;
     }
 }
 
