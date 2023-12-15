@@ -15,7 +15,7 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Crie uma senha" required>
             </div>
-            <button type="submit" [disabled]="isButtonDisabled()">Cadastrar</button>
+            <button type="submit" [disabled]="isLoadingCadastro || isButtonDisabled()">{{ buttonText }}</button>
             <span class="cadastro-text">já tem cadastro? <span (click)="telaLogin()">Logar</span></span>
         </form>
     </div>

@@ -21,23 +21,30 @@ export class LoginComponent {
   senhaIncorreta: boolean = false;
   camposInvalidos: boolean = false;
 
+  isLoadingCadastro: boolean = false;
+  buttonText: string = 'Cadastrar';
+
   async onSubmit() {
     if (!this.validarEmail(this.email)) {
       this.exibirSwal('Erro!', 'error', 'O formato do email digitado não é válido, porfavor verifique :/');
     } else {
+      this.isButtonLoading(true);
       const usuarioEncontrado: any = await this.loginService.verificarUsuarioExistente(this.email);
       if (usuarioEncontrado) {
         const login = await this.loginService.logarUsuario(usuarioEncontrado.id, CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex));
         if (!login) {
           this.exibirSwal('Erro!', 'error', 'Senha incorreta :/');
+          this.isButtonLoading(false);
         } else {
           localStorage.setItem('token', login.token);
           localStorage.setItem('userID', usuarioEncontrado.id);
           this.resetarValores();
+          this.isButtonLoading(false);
           this.router.navigate(['/home']);
         }
       } else {
         this.exibirSwal('Erro!', 'error', 'Não achamos nenhum usuário com esse email. Caso não tenha cadastro clique em "cadastro" abaixo.');
+        this.isButtonLoading(false);
       }
     }
   }
@@ -59,12 +66,24 @@ export class LoginComponent {
     return !(this.email && this.password);
   }
 
+  isButtonLoading(isLoading: boolean) {
+    if (isLoading) {
+      this.isLoadingCadastro = true;
+      this.buttonText = 'Aguarde...';
+    } else {
+      this.isLoadingCadastro = false;
+      this.buttonText = 'Cadastrar';
+    }
+  }
+  
   resetarValores() {
     this.email = '';
     this.password = '';
   }
 
   telaCadastro() {
-    this.router.navigate(['/cadastro']);
+    if(!this.isLoadingCadastro) {
+      this.router.navigate(['/cadastro']);
+    }
   }
 }
