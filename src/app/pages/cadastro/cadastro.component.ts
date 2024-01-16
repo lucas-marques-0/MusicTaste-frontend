@@ -22,7 +22,7 @@ export class CadastroComponent {
   nomeUsuarioComEspacos: boolean = false;
 
   isLoadingCadastro: boolean = false;
-  buttonText: string = 'Cadastrar';
+  buttonText: string = 'Entrar';
 
   async onSubmit() {
     if(this.username.trim().includes(' ')) {
@@ -85,7 +85,7 @@ export class CadastroComponent {
       this.buttonText = 'Aguarde...';
     } else {
       this.isLoadingCadastro = false;
-      this.buttonText = 'Cadastrar';
+      this.buttonText = 'Entrar';
     }
   }
 
