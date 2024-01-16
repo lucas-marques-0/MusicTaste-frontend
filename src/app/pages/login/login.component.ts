@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   camposInvalidos: boolean = false;
 
   isLoadingCadastro: boolean = false;
-  buttonText: string = 'Cadastrar';
+  buttonText: string = 'Entrar';
 
   ngOnInit(): void {
     this.exibirSwal('Pedimos Paciência!', 'warning', 'O cadastro e login podem demorar, estamos usando um serviço de hospedagem back-end gratuito, com pouca velocidade :/');
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
       this.buttonText = 'Aguarde...';
     } else {
       this.isLoadingCadastro = false;
-      this.buttonText = 'Cadastrar';
+      this.buttonText = 'Entrar';
     }
   }
   
