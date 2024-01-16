@@ -1,27 +1,23 @@
-# Musictaste
+<h1>Bem Vindo(a) ao MusicTaste :)</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+![i6](https://github.com/lucas-marques-0/MusicTaste-backend/assets/111307314/7e86be01-39b0-450a-8993-22ffbaf5fb22)
 
-## Development server
+<h2>Aqui você pode compartilhar o seu gosto musical com seus amigos!</h2>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<p>Basta copiar o link de qualquer música do seu Spotify...</p>
 
-## Code scaffolding
+![I3](https://github.com/lucas-marques-0/MusicTaste-frontend/assets/111307314/a5b4e2d9-e80b-46b7-af3f-d3e1e6a2b95d)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<p>e ao colar em seu perfil no MusicTaste, a música será exibida com um player.</p>
 
-## Build
+![i2](https://github.com/lucas-marques-0/MusicTaste-frontend/assets/111307314/ea98392c-8d64-4d0c-8d2f-0041886fd482)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<h2>Veja o que os seus amigos andam escutando e descubra novas músicas!</h2>
 
-## Running unit tests
+![i5](https://github.com/lucas-marques-0/MusicTaste-frontend/assets/111307314/2cdf40cf-089d-4a9f-8756-82bdc4f5bb9c)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<h2>Faça o cadastro em nossa plataforma e experimente!</h2>
+<h3>https://musictasteshare.vercel.app</h3>
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
