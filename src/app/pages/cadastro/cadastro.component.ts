@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from './cadastro.service';
 import * as crypto from 'crypto-js'
@@ -9,7 +9,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
   username: string = '';
@@ -23,6 +23,10 @@ export class CadastroComponent {
 
   isLoadingCadastro: boolean = false;
   buttonText: string = 'Cadastrar';
+
+  ngOnInit(): void {
+    this.exibirSwal('Pedimos Paciência!', 'warning', 'O cadastro e login podem demorar, estamos usando um serviço de hospedagem back-end gratuito, com pouca velocidade :/');
+  }
 
   async onSubmit() {
     if(this.username.trim().includes(' ')) {
